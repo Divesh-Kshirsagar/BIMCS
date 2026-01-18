@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useSmokeParticles } from "./useSmokeParticles";
 
 /**
  * Model Component - 3D Boiler Visualization
@@ -53,6 +54,11 @@ export default function Model({
 
   // Animation state for water waves
   const timeRef = useRef(0);
+
+  // Smoke particle system (modular hook)
+  // Exact outlet position from Blender (top vertex of pipes.011)
+  // const smokeOutletPosition = { x: 0.37581, y: 0.18107, z: 3.795 };
+  // useSmokeParticles(scene, smokeOutletPosition);
 
   // Initial setup - find meshes by name
   useEffect(() => {
@@ -139,10 +145,6 @@ export default function Model({
     if (!fireMeshRef.current) {
       console.warn("⚠️ Fire mesh not found! Check mesh names in Blender.");
       console.warn('   Expected exact mesh name: "fire" (lowercase)');
-    }
-    if (!smokeMeshRef.current) {
-      console.warn("⚠️ Smoke mesh not found! Check mesh names in Blender.");
-      console.warn('   Expected exact mesh name: "smoke" (lowercase)');
     }
   }, [scene]);
 
