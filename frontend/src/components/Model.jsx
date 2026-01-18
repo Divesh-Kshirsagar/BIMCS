@@ -1,8 +1,20 @@
-import React, { useRef, useEffect } from "react";
-import { useGLTF } from "@react-three/drei";
+import React, { useRef, useEffect, useState } from "react";
+import { useGLTF, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useSmokeParticles } from "./useSmokeParticles";
+
+// Mapping of internal mesh names to display labels
+const PART_LABELS = {
+  "water_drum": "Water Drum",
+  "steam_drum": "Steam Drum",
+  "furnace": "Furnace",
+  "Cube": "Mud Drum",
+  "pipes011": "Smoke Outlet",
+  "Water": "Water Level",
+  "fire": "Burner Flame",
+  "fuel_inlet": "Fuel Inlet"
+};
 
 /**
  * Model Component - 3D Boiler Visualization
@@ -44,6 +56,9 @@ export default function Model({
   const group = useRef();
   const { scene } = useGLTF("/model.glb");
 
+  // Interaction State
+  const [hoveredPart, setHoveredPart] = useState(null);
+
   // Refs to store mesh references (found during scene traversal)
   const waterMeshRef = useRef(null);
   const fireMeshRef = useRef(null);
@@ -67,7 +82,7 @@ export default function Model({
     scene.traverse((child) => {
       if (child.isMesh) {
         // Log all mesh names for debugging
-        console.log(`Found mesh: "${child.name}"`);
+        // console.log(`Found mesh: "${child.name}"`);
 
         // Make materials transparent for visual effect
         child.material.transparent = true;
@@ -87,7 +102,7 @@ export default function Model({
         // Find Water mesh (exact match - capital W)
         if (child.name === "Water") {
           waterMeshRef.current = child;
-          console.log("✅ Found Water mesh:", child.name);
+          // console.log("✅ Found Water mesh:", child.name);
 
           // Save original position for animation offsets
           originalPositions.current.water = {
@@ -105,7 +120,7 @@ export default function Model({
 
           // Set initial color - cyan/blue for water
           if (child.material) {
-            child.material.color.set("#315DE7FF"); // Cyan
+            child.material.color.set("#00ffff"); // Cyan
             child.material.opacity = 0.5; // Transparent water
           }
         }
@@ -113,7 +128,7 @@ export default function Model({
         // Find fire mesh (exact match - lowercase)
         if (child.name === "fire") {
           fireMeshRef.current = child;
-          console.log("✅ Found fire mesh:", child.name);
+          // console.log("✅ Found fire mesh:", child.name);
 
           // Setup emissive material for glow effect
           if (child.material) {
@@ -125,7 +140,7 @@ export default function Model({
         // Find smoke mesh (exact match - lowercase)
         if (child.name === "smoke") {
           smokeMeshRef.current = child;
-          console.log("✅ Found smoke mesh:", child.name);
+          // console.log("✅ Found smoke mesh:", child.name);
 
           // Setup smoke material with transparency
           if (child.material) {
@@ -138,14 +153,14 @@ export default function Model({
     });
 
     // Warning if meshes not found
-    if (!waterMeshRef.current) {
-      console.warn("⚠️ Water mesh not found! Check mesh names in Blender.");
-      console.warn('   Expected exact mesh name: "Water" (capital W)');
-    }
-    if (!fireMeshRef.current) {
-      console.warn("⚠️ Fire mesh not found! Check mesh names in Blender.");
-      console.warn('   Expected exact mesh name: "fire" (lowercase)');
-    }
+    // if (!waterMeshRef.current) {
+    //   console.warn("⚠️ Water mesh not found! Check mesh names in Blender.");
+    //   console.warn('   Expected exact mesh name: "Water" (capital W)');
+    // }
+    // if (!fireMeshRef.current) {
+    //   console.warn("⚠️ Fire mesh not found! Check mesh names in Blender.");
+    //   console.warn('   Expected exact mesh name: "fire" (lowercase)');
+    // }
   }, [scene]);
 
   // Animation loop - update meshes every frame
@@ -240,7 +255,42 @@ export default function Model({
 
   return (
     <group ref={group} {...props} dispose={null}>
-      <primitive object={scene} />
+      <primitive 
+        object={scene} 
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          // Check if the hovered part (or its parent) has a known name
+          const label = PART_LABELS[e.object.name];
+          if (label) {
+            document.body.style.cursor = 'pointer';
+            setHoveredPart({ name: label, position: e.point });
+            
+            // Highlight effect (optional, might conflict with internal animations so sticking to cursor only)
+            if (e.object.material && e.object.material.emissive) {
+               // e.object.material.emissive.set('#06b6d4');
+               // e.object.material.emissiveIntensity = 0.5;
+            }
+          }
+        }}
+        onPointerOut={(e) => {
+           document.body.style.cursor = 'auto';
+           setHoveredPart(null);
+        }}
+      />
+      
+      {/* 3D Label Overlay */}
+      {hoveredPart && (
+        <Html position={[hoveredPart.position.x, hoveredPart.position.y + 0.5, hoveredPart.position.z]} center>
+          <div className="bg-black/80 backdrop-blur-md border border-cyan-500 rounded px-3 py-1 pointer-events-none shadow-[0_0_15px_rgba(6,182,212,0.5)] transform -translate-y-8">
+            <div className="text-cyan-400 text-xs font-mono font-bold uppercase tracking-wider whitespace-nowrap flex items-center gap-2">
+               <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+               {hoveredPart.name}
+            </div>
+          </div>
+          {/* Connector Line */}
+          <div className="w-px h-8 bg-gradient-to-t from-cyan-500 to-transparent mx-auto"></div>
+        </Html>
+      )}
     </group>
   );
 }
