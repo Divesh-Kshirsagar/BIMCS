@@ -4,6 +4,7 @@ import { Activity, AlertCircle, Thermometer, Flame, Shield, PlayCircle } from 'l
 import BoilerSchematic from './BoilerSchematic';
 import TrendChart from './TrendChart';
 import ControlPanel from './ControlPanel';
+import TelemetryPanel from './TelemetryPanel';
 
 const Dashboard = () => {
   // ========================
@@ -277,40 +278,49 @@ const Dashboard = () => {
 
       {/* Main Dashboard Layout - Full Height Grid */}
       <main className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 h-full min-h-0 overflow-hidden">
-        {/* Left Panel - Boiler Schematic (8/12 cols) */}
-        <div className="lg:col-span-8 h-full min-h-0 relative glass-panel rounded-xl overflow-hidden shadow-2xl flex flex-col">
-           {/* Schematic Header */}
-           <div className="absolute top-0 left-0 w-full p-4 flex justify-between items-start pointer-events-none z-10 bg-gradient-to-b from-black/60 to-transparent">
-              <div>
-                <h2 className="text-lg font-bold text-slate-200 flex items-center gap-2">
-                  <span className="w-2 h-6 bg-cyan-500 rounded-sm"></span>
-                  LIVE VIEW
-                </h2>
+        {/* Left Panel - Boiler Schematic & Telemetry (8/12 cols) */}
+        <div className="lg:col-span-8 h-full min-h-0 flex flex-col gap-4">
+           {/* 3D View (Flex-1 to take available space) */}
+           <div className="flex-1 min-h-0 relative glass-panel rounded-xl overflow-hidden shadow-2xl flex flex-col">
+              {/* Schematic Header */}
+              <div className="absolute top-0 left-0 w-full p-4 flex justify-between items-start pointer-events-none z-10 bg-gradient-to-b from-black/60 to-transparent">
+                 <div>
+                   <h2 className="text-lg font-bold text-slate-200 flex items-center gap-2">
+                     <span className="w-2 h-6 bg-cyan-500 rounded-sm"></span>
+                     LIVE VIEW
+                   </h2>
+                 </div>
               </div>
+
+             <div className="flex-1 min-h-0">
+               <BoilerSchematic 
+                 waterLevel={simulationState.water_level}
+                 pressure={simulationState.pressure}
+                 fireIntensity={simulationState.fire_intensity}
+                 status={systemStatus}
+               />
+             </div>
            </div>
 
-          <div className="flex-1 min-h-0">
-            <BoilerSchematic 
-              waterLevel={simulationState.water_level}
-              pressure={simulationState.pressure}
-              fireIntensity={simulationState.fire_intensity}
-              status={systemStatus}
-            />
-          </div>
+           {/* Telemetry Panel (Fixed/Auto height at bottom) */}
+           <div className="flex-none">
+              <TelemetryPanel 
+                 waterLevel={simulationState.water_level}
+                 pressure={simulationState.pressure}
+                 predictedTemp={aiData.predicted_temp_final}
+                 steamGeneration={simulationState.steam_generation}
+              />
+           </div>
         </div>
 
-        {/* Right Panel - Controls and Telemetry (4/12 cols) */}
+        {/* Right Panel - Controls and Trend Chart (4/12 cols) */}
         <div className="lg:col-span-4 h-full min-h-0 flex flex-col gap-4">
             
-          {/* Top Right: Telemetry/Control Panel */}
+          {/* Top Right: Control Panel (Compact) */}
           <div className="flex-none">
              <ControlPanel
               fireIntensity={fireIntensity}
               aiModeEnabled={aiModeEnabled}
-              waterLevel={simulationState.water_level}
-              pressure={simulationState.pressure}
-              predictedTemp={aiData.predicted_temp_final}
-              steamGeneration={simulationState.steam_generation}
               onFireChange={setFireIntensity}
               onAiModeChange={setAiModeEnabled}
               onReset={handleReset}
@@ -319,7 +329,7 @@ const Dashboard = () => {
           </div>
 
           {/* Bottom Right: Trend Chart (Fills remaining space) */}
-          <div className="flex-1 min-h-[250px] glass-panel rounded-xl p-4 border border-slate-700/50 flex flex-col">
+          <div className="flex-1 min-h-0 glass-panel rounded-xl p-4 border border-slate-700/50 flex flex-col">
             <div className="flex items-center justify-between mb-2 shrink-0">
                <h3 className="text-sm font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2">
                  <Activity className="w-4 h-4" />

@@ -78,74 +78,8 @@ const ControlPanel = ({
             </label>
           </div>
         </div>
-        
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
-
-        {/* Telemetry Grid */}
-        <div>
-          <p className="text-[10px] text-cyan-500/70 mb-3 font-mono uppercase tracking-widest pl-1 border-l-2 border-cyan-500/50">
-            System Telemetry
-          </p>
-
-          <div className="grid grid-cols-2 gap-3">
-            {/* Water Level */}
-            <div className="bg-slate-900/60 rounded border border-slate-700/50 p-2">
-               <div className="flex items-center gap-2 mb-1">
-                  <Droplets className="w-3 h-3 text-cyan-400" />
-                  <span className="text-[10px] text-slate-400 uppercase">H2O Level</span>
-               </div>
-               <div className={`text-lg font-mono font-bold ${
-                    waterLevel < 20 ? 'text-rose-400' : 
-                    waterLevel > 80 ? 'text-blue-400' : 
-                    'text-cyan-400'
-               }`}>
-                 {waterLevel.toFixed(1)}<span className="text-xs opacity-50 ml-0.5">%</span>
-               </div>
-            </div>
-
-            {/* Pressure */}
-            <div className="bg-slate-900/60 rounded border border-slate-700/50 p-2">
-               <div className="flex items-center gap-2 mb-1">
-                  <Gauge className="w-3 h-3 text-emerald-400" />
-                  <span className="text-[10px] text-slate-400 uppercase">Pressure</span>
-               </div>
-               <div className={`text-lg font-mono font-bold ${
-                  pressure > 18 ? 'text-rose-400' : 
-                  pressure > 15 ? 'text-amber-400' : 
-                  'text-emerald-400'
-               }`}>
-                 {pressure.toFixed(1)}<span className="text-xs opacity-50 ml-0.5">MPa</span>
-               </div>
-            </div>
-
-            {/* Temp */}
-            <div className="bg-slate-900/60 rounded border border-slate-700/50 p-2">
-               <div className="flex items-center gap-2 mb-1">
-                  <Thermometer className="w-3 h-3 text-orange-400" />
-                  <span className="text-[10px] text-slate-400 uppercase">Core Temp</span>
-               </div>
-               <div className={`text-lg font-mono font-bold ${
-                  predictedTemp > 560 ? 'text-rose-400' : 
-                  predictedTemp > 550 ? 'text-amber-400' : 
-                  'text-emerald-400'
-               }`}>
-                 {predictedTemp.toFixed(0)}<span className="text-xs opacity-50 ml-0.5">°C</span>
-               </div>
-            </div>
-
-             {/* Output */}
-            <div className="bg-slate-900/60 rounded border border-slate-700/50 p-2">
-               <div className="flex items-center gap-2 mb-1">
-                  <RefreshCw className="w-3 h-3 text-slate-400" />
-                  <span className="text-[10px] text-slate-400 uppercase">Steam Out</span>
-               </div>
-               <div className="text-lg font-mono font-bold text-slate-200">
-                 {steamGeneration.toFixed(1)}<span className="text-xs opacity-50 ml-0.5">t/h</span>
-               </div>
-            </div>
-          </div>
-        </div>
+        {/* <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div> */}
 
         {/* Reset Button */}
         <button
