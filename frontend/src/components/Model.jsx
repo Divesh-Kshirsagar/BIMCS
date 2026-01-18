@@ -105,7 +105,7 @@ export default function Model({
 
           // Set initial color - cyan/blue for water
           if (child.material) {
-            child.material.color.set("#00ffff"); // Cyan
+            child.material.color.set("#315DE7FF"); // Cyan
             child.material.opacity = 0.5; // Transparent water
           }
         }

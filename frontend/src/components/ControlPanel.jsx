@@ -14,51 +14,57 @@ const ControlPanel = ({
   aiInterventionActive = false
 }) => {
   return (
-    <div className="w-full bg-slate-800 rounded-lg p-6 border-2 border-slate-700">
-      <h3 className="text-xl font-bold text-cyan-400 mb-6 flex items-center gap-2">
-        <Flame className="w-6 h-6" />
-        Control Panel
-      </h3>
+    <div className="w-full glass-panel rounded-xl p-5 relative overflow-hidden flex flex-col gap-4">
+      <div className="flex items-center justify-between border-b border-cyan-500/30 pb-3">
+        <h3 className="text-lg font-bold text-cyan-400 t-glow-text flex items-center gap-2 uppercase tracking-wider">
+          <Flame className="w-5 h-5" />
+          Control Deck
+        </h3>
+        <div className="text-[10px] text-cyan-500/70 font-mono">PNL-01</div>
+      </div>
 
-      <div className="space-y-6">
+      <div className="space-y-5">
         {/* Fire Intensity Control */}
         <div>
           <div className="flex items-center justify-between mb-2">
-            <label className="text-slate-300 font-semibold flex items-center gap-2">
-              <Flame className="w-4 h-4 text-orange-400" />
-              Coal Fire Intensity
+            <label className="text-slate-200 font-semibold text-xs uppercase tracking-wide flex items-center gap-2">
+              <Flame className="w-3 h-3 text-orange-400" />
+              Furnace Intensity
             </label>
-            <span className="text-orange-400 font-bold text-lg">
+            <span className="text-orange-400 font-mono font-bold text-lg t-glow-text">
               {fireIntensity.toFixed(0)}%
             </span>
           </div>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            step="1"
-            value={fireIntensity}
-            onChange={(e) => onFireChange(parseFloat(e.target.value))}
-            className="w-full accent-orange-500"
-            style={{
-              background: `linear-gradient(to right, #f97316 0%, #f97316 ${fireIntensity}%, #475569 ${fireIntensity}%, #475569 100%)`
-            }}
-          />
-          <div className="flex justify-between text-xs text-slate-500 mt-1">
-            <span>0%</span>
-            <span>🔥 Fire Power</span>
-            <span>100%</span>
+          <div className="relative h-6 flex items-center">
+             <input
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                value={fireIntensity}
+                onChange={(e) => onFireChange(parseFloat(e.target.value))}
+                className="w-full z-10"
+              />
+              {/* Custom Track Background for visual flair if needed, simplistic for now */}
+          </div>
+          <div className="flex justify-between text-[10px] text-slate-500 font-mono">
+            <span>IDLE</span>
+            <span>MAX POWER</span>
           </div>
         </div>
 
         {/* AI Supervisor Toggle */}
-        <div className="bg-slate-700 rounded-lg p-4">
+        <div className={`rounded-lg p-3 border transition-all duration-300 ${
+            aiModeEnabled ? 'bg-blue-950/40 border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.15)]' : 'bg-slate-900/40 border-slate-700/50'
+        }`}>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Shield className={`w-5 h-5 ${aiModeEnabled ? 'text-blue-400' : 'text-slate-500'}`} />
+            <div className="flex items-center gap-3">
+              <div className={`p-1.5 rounded-full ${aiModeEnabled ? 'bg-blue-500/20 text-blue-400' : 'bg-slate-700/50 text-slate-500'}`}>
+                 <Shield className="w-4 h-4" />
+              </div>
               <div>
-                <p className="text-slate-300 font-semibold">AI Supervisor Mode</p>
-                <p className="text-xs text-slate-400">Prevent dangerous operating conditions</p>
+                <p className={`font-bold text-xs uppercase tracking-wider ${aiModeEnabled ? 'text-blue-100' : 'text-slate-400'}`}>AI Supervisor</p>
+                <p className="text-[10px] text-slate-500">Auto-safety overrides</p>
               </div>
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
@@ -68,112 +74,75 @@ const ControlPanel = ({
                 onChange={(e) => onAiModeChange(e.target.checked)}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <div className="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
             </label>
           </div>
-          
-          {/* AI Intervention Indicator */}
-          {aiInterventionActive && (
-            <div className="mt-3 p-2 bg-blue-900 border border-blue-500 rounded text-xs text-blue-300 animate-pulse">
-              ⚠️ AI is currently limiting your input for safety
-            </div>
-          )}
         </div>
-
+        
         {/* Divider */}
-        <div className="border-t border-slate-700"></div>
+        <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
 
-        {/* Status Indicators Section */}
+        {/* Telemetry Grid */}
         <div>
-          <p className="text-xs text-slate-400 mb-3 font-semibold uppercase tracking-wide">
-            Live Telemetry
+          <p className="text-[10px] text-cyan-500/70 mb-3 font-mono uppercase tracking-widest pl-1 border-l-2 border-cyan-500/50">
+            System Telemetry
           </p>
 
-          <div className="space-y-3">
-            {/* Water Level Gauge */}
-            <div className="bg-slate-700 rounded-lg p-3">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <Droplets className={`w-4 h-4 ${
+          <div className="grid grid-cols-2 gap-3">
+            {/* Water Level */}
+            <div className="bg-slate-900/60 rounded border border-slate-700/50 p-2">
+               <div className="flex items-center gap-2 mb-1">
+                  <Droplets className="w-3 h-3 text-cyan-400" />
+                  <span className="text-[10px] text-slate-400 uppercase">H2O Level</span>
+               </div>
+               <div className={`text-lg font-mono font-bold ${
                     waterLevel < 20 ? 'text-rose-400' : 
-                    waterLevel > 80 ? 'text-blue-600' : 
+                    waterLevel > 80 ? 'text-blue-400' : 
                     'text-cyan-400'
-                  }`} />
-                  <span className="text-xs text-slate-300">Drum Water Level</span>
-                </div>
-                <span className={`text-sm font-bold ${
-                  waterLevel < 20 ? 'text-rose-400' : 
-                  waterLevel > 80 ? 'text-blue-600' : 
-                  'text-cyan-400'
-                }`}>
-                  {waterLevel.toFixed(1)}%
-                </span>
-              </div>
-              {/* Mini progress bar */}
-              <div className="w-full bg-slate-600 rounded-full h-2">
-                <div
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    waterLevel < 20 ? 'bg-rose-500' : 
-                    waterLevel > 80 ? 'bg-blue-600' : 
-                    'bg-cyan-500'
-                  }`}
-                  style={{ width: `${waterLevel}%` }}
-                ></div>
-              </div>
+               }`}>
+                 {waterLevel.toFixed(1)}<span className="text-xs opacity-50 ml-0.5">%</span>
+               </div>
             </div>
 
-            {/* Pressure Gauge */}
-            <div className="bg-slate-700 rounded-lg p-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Gauge className={`w-4 h-4 ${
-                    pressure > 18 ? 'text-rose-400' : 
-                    pressure > 15 ? 'text-amber-400' : 
-                    'text-emerald-400'
-                  }`} />
-                  <span className="text-xs text-slate-300">Steam Pressure</span>
-                </div>
-                <span className={`text-sm font-bold ${
+            {/* Pressure */}
+            <div className="bg-slate-900/60 rounded border border-slate-700/50 p-2">
+               <div className="flex items-center gap-2 mb-1">
+                  <Gauge className="w-3 h-3 text-emerald-400" />
+                  <span className="text-[10px] text-slate-400 uppercase">Pressure</span>
+               </div>
+               <div className={`text-lg font-mono font-bold ${
                   pressure > 18 ? 'text-rose-400' : 
                   pressure > 15 ? 'text-amber-400' : 
                   'text-emerald-400'
-                }`}>
-                  {pressure.toFixed(1)} MPa
-                </span>
-              </div>
+               }`}>
+                 {pressure.toFixed(1)}<span className="text-xs opacity-50 ml-0.5">MPa</span>
+               </div>
             </div>
 
-            {/* Predicted Temperature */}
-            <div className="bg-slate-700 rounded-lg p-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Thermometer className={`w-4 h-4 ${
-                    predictedTemp > 560 ? 'text-rose-400' : 
-                    predictedTemp > 550 ? 'text-amber-400' : 
-                    'text-emerald-400'
-                  }`} />
-                  <span className="text-xs text-slate-300">AI Predicted Temp</span>
-                </div>
-                <span className={`text-sm font-bold ${
+            {/* Temp */}
+            <div className="bg-slate-900/60 rounded border border-slate-700/50 p-2">
+               <div className="flex items-center gap-2 mb-1">
+                  <Thermometer className="w-3 h-3 text-orange-400" />
+                  <span className="text-[10px] text-slate-400 uppercase">Core Temp</span>
+               </div>
+               <div className={`text-lg font-mono font-bold ${
                   predictedTemp > 560 ? 'text-rose-400' : 
                   predictedTemp > 550 ? 'text-amber-400' : 
                   'text-emerald-400'
-                }`}>
-                  {predictedTemp.toFixed(0)}°C
-                </span>
-              </div>
+               }`}>
+                 {predictedTemp.toFixed(0)}<span className="text-xs opacity-50 ml-0.5">°C</span>
+               </div>
             </div>
 
-            {/* Steam Generation */}
-            <div className="bg-slate-700 rounded-lg p-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-slate-300">Steam Generation</span>
-                </div>
-                <span className="text-sm font-bold text-slate-300">
-                  {steamGeneration.toFixed(1)} t/h
-                </span>
-              </div>
+             {/* Output */}
+            <div className="bg-slate-900/60 rounded border border-slate-700/50 p-2">
+               <div className="flex items-center gap-2 mb-1">
+                  <RefreshCw className="w-3 h-3 text-slate-400" />
+                  <span className="text-[10px] text-slate-400 uppercase">Steam Out</span>
+               </div>
+               <div className="text-lg font-mono font-bold text-slate-200">
+                 {steamGeneration.toFixed(1)}<span className="text-xs opacity-50 ml-0.5">t/h</span>
+               </div>
             </div>
           </div>
         </div>
@@ -181,10 +150,13 @@ const ControlPanel = ({
         {/* Reset Button */}
         <button
           onClick={onReset}
-          className="w-full bg-slate-700 hover:bg-slate-600 text-slate-300 font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+          className="w-full group relative bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-400 font-mono text-xs uppercase tracking-widest py-3 rounded transition-all overflow-hidden"
         >
-          <RefreshCw className="w-4 h-4" />
-          Reset Simulation
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            <RefreshCw className="w-3 h-3 group-hover:rotate-180 transition-transform duration-500" />
+            System Reset
+          </span>
+          <div className="absolute inset-0 bg-cyan-500/5 translate-y-full group-hover:translate-y-0 transition-transform"></div>
         </button>
       </div>
     </div>

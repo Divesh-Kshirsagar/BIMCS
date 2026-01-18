@@ -13,22 +13,22 @@ import {
 
 const TrendChart = ({ data = [], aiData = {} }) => {
   // Custom tooltip for better UX
-  const CustomTooltip = ({ active, payload }) => {
+  const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       const point = payload[0].payload
       return (
-        <div className="bg-slate-800 border-2 border-cyan-500 rounded-lg p-3 shadow-lg">
-          <p className="text-cyan-400 font-semibold mb-1">Time: {point.time}s</p>
-          <div className="space-y-1 text-xs">
-            <p className="text-blue-400">
-              Water: {point.water_level?.toFixed(1)}%
-            </p>
-            <p className="text-red-400">
-              Pressure: {point.pressure?.toFixed(1)} MPa
-            </p>
-            <p className="text-orange-400">
-              Predicted Temp: {point.predicted_temp?.toFixed(0)}°C
-            </p>
+        <div className="bg-slate-900/90 border border-cyan-500/50 backdrop-blur-md rounded p-3 shadow-xl">
+          <p className="text-cyan-400 font-mono text-xs mb-2 border-b border-cyan-500/30 pb-1">T+{point.time}s</p>
+          <div className="space-y-1 text-xs font-mono">
+            {payload.map((entry, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: entry.color }}></div>
+                <span className="text-slate-300">{entry.name}:</span>
+                <span className="font-bold" style={{ color: entry.color }}>
+                  {typeof entry.value === 'number' ? entry.value.toFixed(1) : entry.value}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       );
@@ -37,109 +37,94 @@ const TrendChart = ({ data = [], aiData = {} }) => {
   };
 
   return (
-    <div className="w-full h-full bg-slate-800 rounded-lg p-6 border-2 border-slate-700">
-      <h3 className="text-xl font-bold text-cyan-400 mb-4">
-        System Trends
-      </h3>
-
+    <div className="w-full h-full flex flex-col">
       {data.length === 0 ? (
-        <div className="flex items-center justify-center h-64 text-slate-400">
-          <div className="text-center">
-            <div className="text-4xl mb-2">📊</div>
-            <p>Simulation data will appear here</p>
+        <div className="flex-1 flex items-center justify-center text-slate-500 font-mono text-sm">
+          <div className="text-center animate-pulse">
+             Waiting for simulation data...
           </div>
         </div>
       ) : (
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart
-            data={data}
-            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-            
-            <XAxis
-              dataKey="time"
-              stroke="#94a3b8"
-              label={{ 
-                value: 'Time (steps)', 
-                position: 'insideBottom', 
-                offset: -5, 
-                fill: '#cbd5e1' 
-              }}
-            />
-            
-            <YAxis
-              stroke="#94a3b8"
-              label={{ 
-                value: 'Value', 
-                angle: -90, 
-                position: 'insideLeft', 
-                fill: '#cbd5e1' 
-              }}
-            />
-            
-            <Tooltip content={<CustomTooltip />} />
-            
-            <Legend
-              wrapperStyle={{ color: '#cbd5e1' }}
-              iconType="line"
-            />
+        <div className="flex-1 w-full min-h-0">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              data={data}
+              margin={{ top: 10, right: 30, left: 0, bottom: 20 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
+              
+              <XAxis
+                dataKey="time"
+                stroke="#64748b"
+                tick={{ fill: '#94a3b8', fontSize: 12, fontFamily: 'monospace' }}
+                tickLine={{ stroke: '#64748b' }}
+                label={{ 
+                  value: 'TIME (S)', 
+                  position: 'insideBottom', 
+                  offset: -10, 
+                  fill: '#94a3b8',
+                  fontSize: 12,
+                  fontFamily: 'monospace'
+                }}
+              />
+              
+              <YAxis
+                stroke="#64748b"
+                tick={{ fill: '#94a3b8', fontSize: 12, fontFamily: 'monospace' }}
+                tickLine={{ stroke: '#64748b' }}
+                domain={[0, 100]} /* Fixed domain for stability, or auto if preferred */
+              />
+              
+              <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#94a3b8', strokeDasharray: '5 5' }} />
+              
+              <Legend 
+                 verticalAlign="top" 
+                 height={36} 
+                 iconType="rect"
+                 wrapperStyle={{ fontSize: '12px', fontFamily: 'monospace', textTransform: 'uppercase', color: '#cbd5e1' }}
+              />
 
-            {/* Reference lines for safety limits */}
-            <ReferenceLine
-              y={20}
-              stroke="#ef4444"
-              strokeDasharray="5 5"
-              label={{ 
-                value: 'Low Water (20%)', 
-                position: 'right', 
-                fill: '#ef4444', 
-                fontSize: 10 
-              }}
-            />
-            
-            <ReferenceLine
-              y={80}
-              stroke="#1e40af"
-              strokeDasharray="5 5"
-              label={{ 
-                value: 'High Water (80%)', 
-                position: 'right', 
-                fill: '#1e40af', 
-                fontSize: 10 
-              }}
-            />
+              {/* Reference lines for safety limits */}
+              <ReferenceLine y={20} stroke="#f43f5e" strokeDasharray="3 3" strokeOpacity={0.7} />
+              <ReferenceLine y={80} stroke="#f43f5e" strokeDasharray="3 3" strokeOpacity={0.7} />
 
-            {/* Data lines */}
-            <Line
-              type="monotone"
-              dataKey="water_level"
-              stroke="#06b6d4"
-              strokeWidth={2}
-              dot={false}
-              name="Water Level (%)"
-            />
-            
-            <Line
-              type="monotone"
-              dataKey="pressure"
-              stroke="#ef4444"
-              strokeWidth={2}
-              dot={false}
-              name="Pressure (MPa)"
-            />
-            
-            <Line
-              type="monotone"
-              dataKey="predicted_temp"
-              stroke="#f97316"
-              strokeWidth={2}
-              strokeDasharray="5 5"
-              dot={false}
-              name="AI Predicted Temp (°C / 10)"
-            />
-          </LineChart>
-        </ResponsiveContainer>
+              {/* Data lines */}
+              <Line
+                type="category" /* Optimized smoothing */
+                dataKey="water_level"
+                stroke="#06b6d4"
+                strokeWidth={3}
+                dot={false}
+                activeDot={{ r: 6, strokeWidth: 0, fill: '#fff' }}
+                name="Water (%)"
+                isAnimationActive={false} /* Performance */
+              />
+              
+              <Line
+                type="category"
+                dataKey="pressure"
+                stroke="#f43f5e"
+                strokeWidth={3}
+                dot={false}
+                name="Press (MPa)"
+                isAnimationActive={false}
+              />
+              
+              {/* Scale AI Prediction to fit on same chart if needed, or put on second axis */}
+              {/* Here we assume it's scaled or just shown as raw value if it fits */}
+              <Line
+                type="step"
+                dataKey="predicted_temp"
+                stroke="#f59e0b"
+                strokeWidth={3}
+                strokeDasharray="4 4"
+                dot={false}
+                name="AI Model"
+                isAnimationActive={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       )}
 
       {data.length > 0 && aiData.ai_mode_enabled && (
