@@ -51,13 +51,13 @@ export function useSmokeParticles(
 
       smokeParticleDataRef.current[i] = {
         x: outletX + (Math.random() - 0.5) * 0.1,
-        y: outletY + (Math.random() - 0.5) * 0.1,
-        z: outletZ + Math.random() * 0.5,
+        y: outletY + Math.random() * 0.2, // Start slightly above
+        z: outletZ + (Math.random() - 0.5) * 0.1,
 
         // Velocity with more variation
         vx: (Math.random() - 0.5) * 0.08,
-        vy: (Math.random() - 0.5) * 0.08,
-        vz: 0.15 + Math.random() * 0.25,
+        vy: 0.15 + Math.random() * 0.25, // Upward (Y)
+        vz: (Math.random() - 0.5) * 0.08,
 
         // Lifetime
         age: Math.random() * 5,
@@ -181,22 +181,22 @@ export function useSmokeParticles(
       // Turbulent movement
       const t = timeRef.current + particle.noiseOffset;
       const turbX = turbulence(particle.x, particle.y, particle.z, t) * 0.2;
-      const turbY = turbulence(particle.y, particle.z, particle.x, t * 1.1) * 0.2;
+      const turbZ = turbulence(particle.z, particle.y, particle.x, t * 1.1) * 0.2; // Z is now horizontal
 
       // Apply turbulence to velocity
       particle.vx += turbX * delta;
-      particle.vy += turbY * delta;
+      particle.vz += turbZ * delta; // Z is horizontal
 
       // Dampen horizontal velocity over time (smoke settles)
       particle.vx *= 0.995;
-      particle.vy *= 0.995;
+      particle.vz *= 0.995;
 
       // Slow down vertical speed as smoke ages
-      const vzMultiplier = 1.0 - lifeRatio * 0.5;
+      const vyMultiplier = 1.0 - lifeRatio * 0.5;
 
       particle.x += particle.vx * delta;
-      particle.y += particle.vy * delta;
-      particle.z += particle.vz * delta * vzMultiplier;
+      particle.y += particle.vy * delta * vyMultiplier; // Y is UP
+      particle.z += particle.vz * delta;
 
       // SIZE EXPANSION: Smoke puffs grow as they rise
       const sizeExpansion = 1.0 + lifeRatio * 2.5; // Up to 3.5x original size
@@ -213,14 +213,14 @@ export function useSmokeParticles(
       colors[i3 + 2] = Math.min(1.0, grayShift + 0.05); // Slight blue tint
 
       // Respawn
-      if (particle.age >= particle.maxAge || particle.z > outletZ + 3.0) {
+      if (particle.age >= particle.maxAge || particle.y > outletY + 3.0) { // Check Y for height limit
         particle.x = outletX + (Math.random() - 0.5) * 0.1;
-        particle.y = outletY + (Math.random() - 0.5) * 0.1;
-        particle.z = outletZ + Math.random() * 0.2;
+        particle.y = outletY + (Math.random()) * 0.2; // Start slightly above
+        particle.z = outletZ + (Math.random() - 0.5) * 0.1;
 
         particle.vx = (Math.random() - 0.5) * 0.08;
-        particle.vy = (Math.random() - 0.5) * 0.08;
-        particle.vz = 0.15 + Math.random() * 0.25;
+        particle.vy = 0.15 + Math.random() * 0.25; // Upward velocity in Y
+        particle.vz = (Math.random() - 0.5) * 0.08;
 
         particle.age = 0;
         particle.maxAge = 4 + Math.random() * 3;

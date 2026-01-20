@@ -5,6 +5,7 @@ import { useFireParticles } from "./useFireParticles";
 import { useBoilingBubbles } from "./useBoilingBubbles";
 import { useLavaEffect } from "./useLavaEffect";
 import { useWater2Effect } from "./useWater2Effect";
+import { useSmokeParticles } from "./useSmokeParticles";
 
 const PART_LABELS = {
   "water_drum": "Water Drum",
@@ -50,6 +51,14 @@ export default function Model({
   useWater2Effect(scene, sideWaterMesh, { color: 0x0077aa, scale: 1.5, flowSpeed: 0.02, reflectivity: 0.4 });
   // Steam effect using Water2 shader
   useWater2Effect(scene, smokeMesh, { color: 0x000000, scale: 1.0, flowSpeed: 10, reflectivity: 0.9 });
+
+  // Smoke Outlet Particles
+  // Blender Coordinates (Z-up): [0.1742, 0.0878, 3.8507]
+  // Three.js Coordinates (Y-up): [x, z, -y] or [x, z, y] depending on export.
+  // We map Blender Z (3.8507) to Three Y (Up).
+  // We map Blender Y (0.0878) to Three Z (Depth).
+  const smokeOutletPos = { x: 0.45, y: 4.4, z: -0.2 };
+  useSmokeParticles(scene, smokeOutletPos);
 
   useEffect(() => {
     scene.traverse((child) => {
