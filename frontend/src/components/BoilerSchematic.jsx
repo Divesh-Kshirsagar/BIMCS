@@ -45,9 +45,9 @@ const BoilerSchematic = ({
         </div>
       </div>
 
-      <Canvas camera={{ position: [4, 2, 6], fov: 45 }} gl={{ antialias: true }} dpr={[1, 2]}>
+      <Canvas camera={{ position: [8, 5, 12], fov: 45 }} gl={{ antialias: true }} dpr={[1, 2]}>
         <color attach="background" args={['#020617']} />
-        <fog attach="fog" args={['#020617', 5, 20]} />
+        <fog attach="fog" args={['#020617', 5, 30]} />
         
         {/* Cinematic Lighting */}
         <ambientLight intensity={0.5} />
@@ -71,7 +71,7 @@ const BoilerSchematic = ({
         />
 
         <Suspense fallback={null}>
-          <group position={[0, 0.5, 0]}>
+          <group position={[0, 0, 0]}>
             <Model 
               waterLevel={waterLevel}
               pressure={pressure}
@@ -85,7 +85,8 @@ const BoilerSchematic = ({
           enablePan={true} 
           enableZoom={true} 
           enableRotate={true}
-          maxPolarAngle={Math.PI / 2} /* Prevent going below ground */
+          target={[0, 1, 0]}
+          maxPolarAngle={Math.PI / 1.5}
           autoRotate={false}
         />
       </Canvas>
