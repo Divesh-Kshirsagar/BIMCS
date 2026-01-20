@@ -3,168 +3,152 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 /**
- * Custom hook for creating and animating a smoke particle system
- * 
- * This hook creates a realistic smoke effect using Three.js particles with:
- * - Custom ShaderMaterial for per-particle opacity control
- * - Upward movement with slight horizontal drift
- * - Fade-out effect as particles age
- * - Continuous respawning at the outlet position
- * 
+ * Enhanced smoke particle system with realistic effects
+ *
+ * Features:
+ * - Turbulent noise-based movement for natural dissipation
+ * - Size expansion as smoke rises (puffs grow)
+ * - Color variation from dark gray to light white
+ * - Improved blending for ethereal smoke look
+ *
  * @param {THREE.Scene} scene - The Three.js scene to add particles to
  * @param {Object} outletPosition - The 3D position where smoke should emit from
- * @param {number} outletPosition.x - X coordinate of the outlet
- * @param {number} outletPosition.y - Y coordinate of the outlet
- * @param {number} outletPosition.z - Z coordinate of the outlet
- * @returns {React.RefObject} Reference to the particle system (for debugging/modification)
- * 
- * @example
- * // In your component:
- * const smokeOutletPosition = { x: 0.37581, y: 0.18107, z: 3.795 };
- * useSmokeParticles(scene, smokeOutletPosition);
+ * @returns {React.RefObject} Reference to the particle system
  */
-export function useSmokeParticles(scene, outletPosition = { x: 0.37581, y: 0.18107, z: 3.795 }) {
-  // Refs to store particle system and individual particle data
+export function useSmokeParticles(
+  scene,
+  outletPosition = { x: 0.37581, y: 0.18107, z: 3.795 }
+) {
   const smokeParticlesRef = useRef(null);
   const smokeParticleDataRef = useRef([]);
-  
-  // Configuration
-  const PARTICLE_COUNT = 80; // Total number of smoke particles
+  const timeRef = useRef(0);
 
-  // ============================================================================
-  // INITIALIZATION: Create particle system on mount
-  // ============================================================================
+  const PARTICLE_COUNT = 100;
+
+  // Noise function for turbulent movement
+  const turbulence = (x, y, z, t) => {
+    const freq1 = Math.sin(x * 2.5 + t * 0.8) * Math.cos(y * 3.0 + t);
+    const freq2 = Math.sin(z * 2.0 + t * 0.6) * Math.cos(x * 2.5 + t * 0.9);
+    const freq3 = Math.sin((x + y) * 1.5 + t * 1.2);
+    return (freq1 + freq2 + freq3) / 3;
+  };
+
   useEffect(() => {
     if (!scene) return;
 
-    console.log("🌫️ Creating smoke particle system...");
+    console.log("🌫️ Creating enhanced smoke particle system...");
 
     const { x: outletX, y: outletY, z: outletZ } = outletPosition;
-    console.log("📍 Smoke outlet position:", outletPosition);
 
-    // Create buffer geometry for particles
     const particleGeometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(PARTICLE_COUNT * 3); // x,y,z for each particle
-    const opacities = new Float32Array(PARTICLE_COUNT); // Alpha value for each particle
+    const positions = new Float32Array(PARTICLE_COUNT * 3);
+    const sizes = new Float32Array(PARTICLE_COUNT);
+    const alphas = new Float32Array(PARTICLE_COUNT);
+    const colors = new Float32Array(PARTICLE_COUNT * 3);
 
-    // -------------------------------------------------------------------------
-    // Initialize each particle with random properties
-    // -------------------------------------------------------------------------
     for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const i3 = i * 3; // Index in positions array (x,y,z)
+      const i3 = i * 3;
 
-      // Store particle properties in data array
       smokeParticleDataRef.current[i] = {
-        // Position: Start at outlet with slight random offset
         x: outletX + (Math.random() - 0.5) * 0.1,
         y: outletY + (Math.random() - 0.5) * 0.1,
         z: outletZ + Math.random() * 0.5,
 
-        // Velocity: Particles rise upward with slight horizontal drift
-        vx: (Math.random() - 0.5) * 0.05, // Horizontal drift X
-        vy: (Math.random() - 0.5) * 0.05, // Horizontal drift Y
-        vz: 0.2 + Math.random() * 0.3,    // Upward speed (0.2-0.5 units/sec)
+        // Velocity with more variation
+        vx: (Math.random() - 0.5) * 0.08,
+        vy: (Math.random() - 0.5) * 0.08,
+        vz: 0.15 + Math.random() * 0.25,
 
-        // Lifetime: How long the particle exists before respawning
-        age: Math.random() * 5,           // Stagger initial ages (0-5 sec)
-        maxAge: 3 + Math.random() * 2,    // Lifetime (3-5 seconds)
+        // Lifetime
+        age: Math.random() * 5,
+        maxAge: 4 + Math.random() * 3,
 
-        // Visual properties
-        opacity: 0.3 + Math.random() * 0.2, // Initial opacity (0.3-0.5)
-        size: 0.15 + Math.random() * 0.1,   // Particle size (currently unused)
+        // Visual
+        baseSize: 0.2 + Math.random() * 0.15,
+        opacity: 0.5 + Math.random() * 0.2,
+        
+        // Unique noise offset
+        noiseOffset: Math.random() * 100,
+        
+        // Initial gray value (0.4-0.6 = darker gray at start)
+        grayValue: 0.4 + Math.random() * 0.2,
       };
 
-      // Set initial positions in geometry buffer
       positions[i3] = smokeParticleDataRef.current[i].x;
       positions[i3 + 1] = smokeParticleDataRef.current[i].y;
       positions[i3 + 2] = smokeParticleDataRef.current[i].z;
 
-      // Set initial opacity
-      opacities[i] = smokeParticleDataRef.current[i].opacity;
+      sizes[i] = smokeParticleDataRef.current[i].baseSize;
+      alphas[i] = smokeParticleDataRef.current[i].opacity;
+
+      const gray = smokeParticleDataRef.current[i].grayValue;
+      colors[i3] = gray;
+      colors[i3 + 1] = gray;
+      colors[i3 + 2] = gray;
     }
 
-    // Add attributes to geometry
-    particleGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(positions, 3) // 3 values per particle (x,y,z)
-    );
-    particleGeometry.setAttribute(
-      "alpha",
-      new THREE.BufferAttribute(opacities, 1) // 1 value per particle (opacity)
-    );
+    particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    particleGeometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
+    particleGeometry.setAttribute("alpha", new THREE.BufferAttribute(alphas, 1));
+    particleGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
-    // -------------------------------------------------------------------------
-    // Create custom shader material for per-particle opacity
-    // Note: PointsMaterial doesn't support per-particle opacity, so we use ShaderMaterial
-    // -------------------------------------------------------------------------
-    const particleMaterial = new THREE.ShaderMaterial({
+    const smokeMaterial = new THREE.ShaderMaterial({
       uniforms: {
-        uTime: { value: 0 },                      // Unused, but available for animations
-        uSize: { value: 15.0 },                   // Base particle size in pixels
-        uColor: { value: new THREE.Color(0x888888) }, // Gray smoke color
+        uTime: { value: 0 },
       },
-      
-      // Vertex Shader: Runs once per particle
-      // Calculates final particle position and size
+
       vertexShader: `
-        attribute float alpha;     // Per-particle opacity from geometry
-        varying float vAlpha;      // Pass opacity to fragment shader
-        uniform float uSize;       // Base particle size
+        attribute float size;
+        attribute float alpha;
+        attribute vec3 color;
+        
+        varying float vAlpha;
+        varying vec3 vColor;
         
         void main() {
           vAlpha = alpha;
+          vColor = color;
           
-          // Transform particle position to view space
           vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-          
-          // Apply size attenuation (particles get smaller with distance)
-          gl_PointSize = uSize * (300.0 / -mvPosition.z);
-          
-          // Final particle position
+          gl_PointSize = size * (350.0 / -mvPosition.z);
           gl_Position = projectionMatrix * mvPosition;
         }
       `,
-      
-      // Fragment Shader: Runs for each pixel of each particle
-      // Creates circular soft-edged particles
+
       fragmentShader: `
-        uniform vec3 uColor;       // Particle color
-        varying float vAlpha;      // Particle opacity from vertex shader
+        varying float vAlpha;
+        varying vec3 vColor;
         
         void main() {
-          // Create circular particles with soft edges
-          vec2 center = gl_PointCoord - vec2(0.5); // Center point (0,0)
-          float dist = length(center);              // Distance from center
+          vec2 center = gl_PointCoord - vec2(0.5);
+          float dist = length(center);
           
-          // Smooth falloff from center to edge (creates soft circle)
-          float alpha = smoothstep(0.5, 0.0, dist) * vAlpha;
+          // Soft, fluffy smoke edge
+          float alpha = smoothstep(0.5, 0.1, dist) * vAlpha;
           
-          // Discard fully transparent pixels (optimization)
+          // Additional soft glow around edges
+          float glow = smoothstep(0.5, 0.3, dist) * 0.3;
+          
           if (alpha < 0.01) discard;
           
-          // Output final color with alpha
-          gl_FragColor = vec4(uColor, alpha);
+          // Final smoke color with slight blue tint
+          vec3 smokeColor = vColor + vec3(0.0, 0.02, 0.05);
+          
+          gl_FragColor = vec4(smokeColor, alpha + glow * vAlpha);
         }
       `,
-      
-      // Material properties
-      transparent: true,              // Enable transparency
-      depthWrite: false,              // Don't write to depth buffer (prevents sorting issues)
-      blending: THREE.NormalBlending, // Standard alpha blending
+
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.NormalBlending,
     });
 
-    // -------------------------------------------------------------------------
-    // Create and add particle system to scene
-    // -------------------------------------------------------------------------
-    const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+    const particleSystem = new THREE.Points(particleGeometry, smokeMaterial);
     smokeParticlesRef.current = particleSystem;
     scene.add(particleSystem);
-    
-    console.log("✅ Smoke particle system created with", PARTICLE_COUNT, "particles");
 
-    // -------------------------------------------------------------------------
-    // Cleanup function: Remove particles when component unmounts
-    // -------------------------------------------------------------------------
+    console.log("✅ Enhanced smoke system created with", PARTICLE_COUNT, "particles");
+
     return () => {
       if (smokeParticlesRef.current) {
         scene.remove(smokeParticlesRef.current);
@@ -174,73 +158,88 @@ export function useSmokeParticles(scene, outletPosition = { x: 0.37581, y: 0.181
     };
   }, [scene, outletPosition.x, outletPosition.y, outletPosition.z]);
 
-  // ============================================================================
-  // ANIMATION: Update particles every frame
-  // ============================================================================
   useFrame((state, delta) => {
     if (!smokeParticlesRef.current || smokeParticleDataRef.current.length === 0) return;
 
-    // Get direct access to geometry arrays for performance
+    timeRef.current += delta;
+
     const positions = smokeParticlesRef.current.geometry.attributes.position.array;
+    const sizes = smokeParticlesRef.current.geometry.attributes.size.array;
     const alphas = smokeParticlesRef.current.geometry.attributes.alpha.array;
+    const colors = smokeParticlesRef.current.geometry.attributes.color.array;
 
     const { x: outletX, y: outletY, z: outletZ } = outletPosition;
 
-    // -------------------------------------------------------------------------
-    // Update each particle
-    // -------------------------------------------------------------------------
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const particle = smokeParticleDataRef.current[i];
-      const i3 = i * 3; // Position index in array
+      const i3 = i * 3;
 
-      // Age the particle
       particle.age += delta;
 
-      // Move particle based on velocity
-      particle.x += particle.vx * delta; // Horizontal drift
-      particle.y += particle.vy * delta; // Horizontal drift
-      particle.z += particle.vz * delta; // Upward movement
-
-      // Fade out particle as it ages (0% age = full opacity, 100% age = transparent)
       const lifeRatio = particle.age / particle.maxAge;
-      particle.opacity = (1 - lifeRatio) * 0.6; // Max opacity of 0.6
 
-      // -----------------------------------------------------------------------
-      // Respawn particle if it's too old or has risen too high
-      // -----------------------------------------------------------------------
-      if (particle.age >= particle.maxAge || particle.z > outletZ + 2.5) {
-        // Reset position to outlet with random offset
+      // Turbulent movement
+      const t = timeRef.current + particle.noiseOffset;
+      const turbX = turbulence(particle.x, particle.y, particle.z, t) * 0.2;
+      const turbY = turbulence(particle.y, particle.z, particle.x, t * 1.1) * 0.2;
+
+      // Apply turbulence to velocity
+      particle.vx += turbX * delta;
+      particle.vy += turbY * delta;
+
+      // Dampen horizontal velocity over time (smoke settles)
+      particle.vx *= 0.995;
+      particle.vy *= 0.995;
+
+      // Slow down vertical speed as smoke ages
+      const vzMultiplier = 1.0 - lifeRatio * 0.5;
+
+      particle.x += particle.vx * delta;
+      particle.y += particle.vy * delta;
+      particle.z += particle.vz * delta * vzMultiplier;
+
+      // SIZE EXPANSION: Smoke puffs grow as they rise
+      const sizeExpansion = 1.0 + lifeRatio * 2.5; // Up to 3.5x original size
+      sizes[i] = particle.baseSize * sizeExpansion;
+
+      // OPACITY: Fade out as it ages
+      const fadeout = Math.max(0, 1.0 - lifeRatio * 1.2);
+      alphas[i] = particle.opacity * fadeout;
+
+      // COLOR: Transition from dark gray to lighter white
+      const grayShift = particle.grayValue + lifeRatio * 0.4; // Gets lighter
+      colors[i3] = Math.min(1.0, grayShift);
+      colors[i3 + 1] = Math.min(1.0, grayShift);
+      colors[i3 + 2] = Math.min(1.0, grayShift + 0.05); // Slight blue tint
+
+      // Respawn
+      if (particle.age >= particle.maxAge || particle.z > outletZ + 3.0) {
         particle.x = outletX + (Math.random() - 0.5) * 0.1;
         particle.y = outletY + (Math.random() - 0.5) * 0.1;
         particle.z = outletZ + Math.random() * 0.2;
 
-        // Reset velocity with new random values
-        particle.vx = (Math.random() - 0.5) * 0.05;
-        particle.vy = (Math.random() - 0.5) * 0.05;
-        particle.vz = 0.2 + Math.random() * 0.3;
+        particle.vx = (Math.random() - 0.5) * 0.08;
+        particle.vy = (Math.random() - 0.5) * 0.08;
+        particle.vz = 0.15 + Math.random() * 0.25;
 
-        // Reset lifetime
         particle.age = 0;
-        particle.maxAge = 3 + Math.random() * 2; // 3-5 seconds
-
-        // Reset opacity
-        particle.opacity = 0.4 + Math.random() * 0.2;
+        particle.maxAge = 4 + Math.random() * 3;
+        particle.baseSize = 0.2 + Math.random() * 0.15;
+        particle.opacity = 0.5 + Math.random() * 0.2;
+        particle.noiseOffset = Math.random() * 100;
+        particle.grayValue = 0.4 + Math.random() * 0.2;
       }
 
-      // -----------------------------------------------------------------------
-      // Write updated values back to geometry arrays
-      // -----------------------------------------------------------------------
       positions[i3] = particle.x;
       positions[i3 + 1] = particle.y;
       positions[i3 + 2] = particle.z;
-      alphas[i] = particle.opacity;
     }
 
-    // Tell Three.js that the geometry has changed and needs to be re-uploaded to GPU
     smokeParticlesRef.current.geometry.attributes.position.needsUpdate = true;
+    smokeParticlesRef.current.geometry.attributes.size.needsUpdate = true;
     smokeParticlesRef.current.geometry.attributes.alpha.needsUpdate = true;
+    smokeParticlesRef.current.geometry.attributes.color.needsUpdate = true;
   });
 
-  // Return reference to particle system (can be used for debugging or further customization)
   return smokeParticlesRef;
 }
