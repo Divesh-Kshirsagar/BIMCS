@@ -3,6 +3,10 @@ import { useGLTF, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useSmokeParticles } from "./useSmokeParticles";
+import { useFireParticles } from "./useFireParticles";
+import { useBoilingBubbles } from "./useBoilingBubbles";
+import { useLavaEffect } from "./useLavaEffect";
+import { useWater2Effect } from "./useWater2Effect";
 
 // Mapping of internal mesh names to display labels
 const PART_LABELS = {
@@ -17,33 +21,12 @@ const PART_LABELS = {
 };
 
 /**
- * Model Component - 3D Boiler Visualization
+ * Model Component - 3D Boiler Visualization with Realistic Effects
  *
- * This component loads the Blender model and updates it based on simulation state
- *
- * BLENDER MODEL MESHES USED (from model_data.json):
- * ===================================================
- * ANIMATED CONTENT MESHES:
- * 1. WATER MESH:
- *    - Name: "Water" (exact, capital W)
- *    - Effect: Gentle bobbing animation for water movement
- *    - Material: Cyan/blue with transparency
- *
- * 2. FIRE MESH:
- *    - Name: "fire" (exact, lowercase)
- *    - Effect: Glow intensity based on pressure
- *    - Color shifts with intensity (orange → yellow → white)
- *
- * 3. SMOKE MESH:
- *    - Name: "smoke" (exact, lowercase)
- *    - Effect: Animated opacity for smoke/steam effect
- *    - Material: White with transparency
- *
- * STATIC CONTAINER MESHES (no animation):
- * - "water drum" - water container
- * - "steam drum" - steam container
- * - "furnace" - furnace body
- * - "fuel inlet" - burner
+ * Effects:
+ * - Fire: Lava shader using three-custom-shader-material + particle overlay
+ * - Water: Water2-style physical material with animations
+ * - Smoke: Enhanced particles with turbulence and size expansion
  */
 
 export default function Model({
@@ -59,199 +42,77 @@ export default function Model({
   // Interaction State
   const [hoveredPart, setHoveredPart] = useState(null);
 
-  // Refs to store mesh references (found during scene traversal)
-  const waterMeshRef = useRef(null);
-  const fireMeshRef = useRef(null);
-  const smokeMeshRef = useRef(null);
+  // Mesh refs - populated after scene traversal
+  const [waterMesh, setWaterMesh] = useState(null);
+  const [fireMesh, setFireMesh] = useState(null);
 
-  // Store original positions to apply animations as offsets
-  const originalPositions = useRef({});
+  // ============================================================================
+  // PARTICLE SYSTEMS
+  // ============================================================================
+  
+  // Fire particles for additional flame effect
+  const firePosition = { x: 0.4136, y: -0.0432, z: 0.6 };
+  useFireParticles(scene, firePosition, fireIntensity);
 
-  // Animation state for water waves
-  const timeRef = useRef(0);
+  // Smoke particles inside steam drum
+  const smokePosition = { x: -0.7101, y: 0.1609, z: 2.8478 };
+  useSmokeParticles(scene, smokePosition);
 
-  // Smoke particle system (modular hook)
-  // Exact outlet position from Blender (top vertex of pipes.011)
-  // const smokeOutletPosition = { x: 0.37581, y: 0.18107, z: 3.795 };
-  // useSmokeParticles(scene, smokeOutletPosition);
+  // Boiling bubbles in water
+  const waterBounds = {
+    centerX: -0.0029,
+    centerY: -0.0512,
+    bottomZ: 0.5,
+    topZ: 1.7,
+    radiusX: 0.6,
+    radiusY: 0.6,
+  };
+  useBoilingBubbles(scene, waterBounds, fireIntensity);
+
+  // ============================================================================
+  // SHADER-BASED EFFECTS (applied to meshes after they're found)
+  // ============================================================================
+  
+  // Lava effect on fire mesh
+  useLavaEffect(scene, fireMesh, fireIntensity);
+
+  // Water2 effect on water mesh
+  useWater2Effect(scene, waterMesh, {
+    color: 0x0088aa,
+    scale: 2,
+    flowSpeed: 0.03,
+    reflectivity: 0.5,
+  });
 
   // Initial setup - find meshes by name
   useEffect(() => {
-    console.log("🔍 Searching for meshes in model...");
+    console.log("🔍 Setting up model with realistic effects...");
 
     scene.traverse((child) => {
       if (child.isMesh) {
-        // Log all mesh names for debugging
-        // console.log(`Found mesh: "${child.name}"`);
-
-        // Make materials transparent for visual effect
         child.material.transparent = true;
         child.material.needsUpdate = true;
 
-        // MESH NAMES FROM BLENDER MODEL (model_data.json):
-        // CONTENT MESHES (to animate):
-        // - "Water" - actual water (blue transparent)
-        // - "smoke" - smoke/steam content
-        // - "fire" - fire/flame content
-        // CONTAINER MESHES (should be static):
-        // - "water drum" - water container
-        // - "steam drum" - steam container
-        // - "furnace" - main furnace body
-        // - "fuel inlet" - fuel burner
-
-        // Find Water mesh (exact match - capital W)
+        // Water mesh - store reference for Water2 effect
         if (child.name === "Water") {
-          waterMeshRef.current = child;
-          // console.log("✅ Found Water mesh:", child.name);
-
-          // Save original position for animation offsets
-          originalPositions.current.water = {
-            x: child.position.x,
-            y: child.position.y,
-            z: child.position.z,
-          };
-
-          // Save original rotation for wobble offsets
-          originalPositions.current.waterRotation = {
-            x: child.rotation.x,
-            y: child.rotation.y,
-            z: child.rotation.z,
-          };
-
-          // Set initial color - cyan/blue for water
-          if (child.material) {
-            child.material.color.set("#00ffff"); // Cyan
-            child.material.opacity = 0.5; // Transparent water
-          }
+          console.log("✅ Found Water mesh");
+          setWaterMesh(child);
         }
 
-        // Find fire mesh (exact match - lowercase)
+        // Fire mesh - store reference for Lava effect
         if (child.name === "fire") {
-          fireMeshRef.current = child;
-          // console.log("✅ Found fire mesh:", child.name);
-
-          // Setup emissive material for glow effect
-          if (child.material) {
-            child.material.emissive.set("#ff6600"); // Orange glow
-            child.material.emissiveIntensity = 1.0;
-          }
+          console.log("✅ Found fire mesh");
+          setFireMesh(child);
         }
-        
-        // Find smoke mesh (exact match - lowercase)
-        if (child.name === "smoke") {
-          smokeMeshRef.current = child;
-          // console.log("✅ Found smoke mesh:", child.name);
 
-          // Setup smoke material with transparency
-          if (child.material) {
-            child.material.transparent = true;
-            child.material.opacity = 0.3;
-            child.material.color.set("#ffffff"); // White smoke/steam
-          }
+        // Smoke mesh - hide original (replaced by particles)
+        if (child.name === "smoke") {
+          child.visible = false;
+          console.log("✅ Original smoke mesh hidden (using particles)");
         }
       }
     });
-
-    // Warning if meshes not found
-    // if (!waterMeshRef.current) {
-    //   console.warn("⚠️ Water mesh not found! Check mesh names in Blender.");
-    //   console.warn('   Expected exact mesh name: "Water" (capital W)');
-    // }
-    // if (!fireMeshRef.current) {
-    //   console.warn("⚠️ Fire mesh not found! Check mesh names in Blender.");
-    //   console.warn('   Expected exact mesh name: "fire" (lowercase)');
-    // }
   }, [scene]);
-
-  // Animation loop - update meshes every frame
-  useFrame((state, delta) => {
-    // Increment time for animations
-    timeRef.current += delta;
-    
-    // ========================
-    // UPDATE WATER MESH - LIVE ANIMATION
-    // ========================
-    if (waterMeshRef.current && originalPositions.current.water) {
-      // NOTE: No scaling - fire intensity doesn't change water volume
-      // Instead, create gentle bobbing/wave motion for "live" feeling
-      
-      // Gentle vertical bobbing (simulates water movement)
-      const bobbingAmount = Math.sin(timeRef.current * 2) * 0.005; // Small movement
-      
-      // IMPORTANT: Add offset to ORIGINAL position, don't replace it
-      waterMeshRef.current.position.y = originalPositions.current.water.y + bobbingAmount;
-      
-      // Subtle rotation wobble (like water sloshing)
-      // IMPORTANT: Add wobble to ORIGINAL rotation, don't replace it
-      if (originalPositions.current.waterRotation) {
-        const wobbleX = Math.sin(timeRef.current * 1.5) * 0.01;
-        const wobbleZ = Math.cos(timeRef.current * 1.3) * 0.01;
-        
-        waterMeshRef.current.rotation.x = originalPositions.current.waterRotation.x + wobbleX;
-        waterMeshRef.current.rotation.z = originalPositions.current.waterRotation.z + wobbleZ;
-      }
-      
-      // Update water color based on status (visual feedback only)
-      if (waterMeshRef.current.material) {
-        // Keep water cyan/blue - just adjust opacity for "flow" effect
-        waterMeshRef.current.material.color.set("#00ffff");
-        
-        // Pulsing opacity for "flowing" effect
-        const opacityPulse = 0.6 + Math.sin(timeRef.current * 3) * 0.1;
-        waterMeshRef.current.material.opacity = opacityPulse;
-      }
-    }
-
-    // ========================
-    // UPDATE FIRE MESH
-    // ========================
-    if (fireMeshRef.current && fireMeshRef.current.material) {
-      // Fire glow intensity based on pressure
-      // Higher pressure = brighter fire (more energy in system)
-      const targetIntensity = (pressure / 25.0) * 3.0; // Scale 0-25 MPa → 0-3 intensity
-
-      // Smooth transition
-      if (fireMeshRef.current.material.emissiveIntensity !== undefined) {
-        fireMeshRef.current.material.emissiveIntensity +=
-          (targetIntensity - fireMeshRef.current.material.emissiveIntensity) *
-          0.1;
-      }
-
-      // Color shift based on fire intensity
-      if (fireIntensity > 80) {
-        fireMeshRef.current.material.emissive.set("#ffffff"); // White hot
-      } else if (fireIntensity > 50) {
-        fireMeshRef.current.material.emissive.set("#ffaa00"); // Yellow
-      } else {
-        fireMeshRef.current.material.emissive.set("#ff6600"); // Orange
-      }
-      
-      // Add flickering effect to fire
-      const flicker = 1 + Math.sin(timeRef.current * 10) * 0.1;
-      if (fireMeshRef.current.material.emissiveIntensity !== undefined) {
-        fireMeshRef.current.material.emissiveIntensity *= flicker;
-      }
-    }
-
-    // ========================
-    // UPDATE SMOKE/STEAM MESH - ANIMATED OPACITY
-    // ========================
-    if (smokeMeshRef.current && smokeMeshRef.current.material) {
-      // NOTE: No scaling or position changes as requested
-
-      // Animate opacity to create smoke effect (rising/dissipating)
-      const smokeOpacity = 0.2 + Math.sin(timeRef.current * 1.5) * 0.15;
-      smokeMeshRef.current.material.opacity = smokeOpacity;
-
-      // Subtle color variation (simulate smoke density)
-      const smokeShade = 0.7 + Math.sin(timeRef.current * 2) * 0.2;
-      smokeMeshRef.current.material.color.setRGB(
-        smokeShade,
-        smokeShade,
-        smokeShade,
-      );
-    }
-  });
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -259,17 +120,10 @@ export default function Model({
         object={scene} 
         onPointerOver={(e) => {
           e.stopPropagation();
-          // Check if the hovered part (or its parent) has a known name
           const label = PART_LABELS[e.object.name];
           if (label) {
             document.body.style.cursor = 'pointer';
             setHoveredPart({ name: label, position: e.point });
-            
-            // Highlight effect (optional, might conflict with internal animations so sticking to cursor only)
-            if (e.object.material && e.object.material.emissive) {
-               // e.object.material.emissive.set('#06b6d4');
-               // e.object.material.emissiveIntensity = 0.5;
-            }
           }
         }}
         onPointerOut={(e) => {
@@ -295,5 +149,5 @@ export default function Model({
   );
 }
 
-// NOTE: This preloads the model on app start
+// Preload the model
 useGLTF.preload("/model.glb");
