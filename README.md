@@ -11,6 +11,8 @@
 ### Control Panel & Telemetry
 <!-- Add a screenshot of the control panel and charts here -->
 ![Control Panel](./screenshots/control_panel.png)
+![Control Panel](./screenshots/telemetry1.png)
+![Control Panel](./screenshots/telemetry2.png)
 
 ---
 
