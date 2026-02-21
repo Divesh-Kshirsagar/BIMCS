@@ -1,0 +1,21 @@
+# Machine Learning & AI
+tensorflow
+scikit-learn
+scipy
+sympy
+
+# Data Manipulation
+pandas
+numpy
+
+# Visualization & UI
+matplotlib
+seaborn
+plotly
+
+# Utilities & Dev
+ipykernel
+
+# Backend & API
+fastapi
+uvicorn
