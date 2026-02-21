@@ -1,0 +1,108 @@
+site_name: B.I.M.C.S Documentation
+site_description: Boiler Intelligent Monitoring & Control System - Industrial Digital Twin
+site_author: B.I.M.C.S Team
+site_url: https://bimcs.example.com
+
+# Repository
+repo_name: bimcs
+repo_url: https://github.com/your-org/bimcs
+edit_uri: edit/main/docs/
+
+# Theme Configuration
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  
+  icon:
+    logo: material/factory
+    repo: fontawesome/brands/github
+
+# Extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+# Plugins
+plugins:
+  - search
+  - mermaid2
+
+# Navigation Structure
+nav:
+  - Home: index.md
+  - Architecture:
+      - System Overview: architecture.md
+      - Technology Stack: tech-stack.md
+  - Components:
+      - Frontend: frontend.md
+      - Backend: backend.md
+      - 3D Model: 3d-model.md
+  - Reference:
+      - API Documentation: api-reference.md
+      - ML Model Training: ml-training.md
+  - Development:
+      - Setup Guide: development.md
+      - Contributing: contributing.md
+
+# Extra Configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-org/bimcs
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/your-org/bimcs
+  version:
+    provider: mike
+
+# Copyright
+copyright: Copyright &copy; 2026 B.I.M.C.S Team
