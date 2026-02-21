@@ -81,10 +81,7 @@ graph TB
     Smoke -.uses.-> SmokeHook[useSmokeParticles]
     Water -.uses.-> WaterHook[useWater2Effect]
     Bubbles -.uses.-> BubbleHook[useBoilingBubbles]
-    
-    style Dashboard fill:#4ecdc4,stroke:#087f5b
-    style Model fill:#ffd43b,stroke:#f08c00
-    style Schematic fill:#a9e34b,stroke:#5c940d
+
 ```
 
 ## Core Components
@@ -163,11 +160,7 @@ graph LR
     Glow -.temperature.-> State
     Bubbles -.boiling.-> State
     
-    style Model fill:#ffd43b
-    style Load fill:#91d5ff
-    style Fire fill:#ff6b6b
-    style Water fill:#339af0
-    style Smoke fill:#868e96
+
 ```
 
 **Key Features**:
@@ -209,9 +202,7 @@ graph TB
     
     Dashboard -->|props| Display
     
-    style Panel fill:#ffe58f
-    style Slider fill:#ff6b6b
-    style Toggle fill:#51cf66
+
 ```
 
 **Input Handling**:
@@ -386,8 +377,7 @@ graph TB
     Model3D --> Display2[Update 3D Effects]
     Charts --> Display3[Update Charts]
     Telemetry --> Display4[Update Metrics]
-    
-    style DashboardState fill:#4ecdc4,stroke:#0c8599,stroke-width:3px
+
 ```
 
 ### Props Drilling

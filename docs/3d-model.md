@@ -31,12 +31,7 @@ graph TB
     Scene --> Fire[Fire Volume]
     Scene --> Smoke[Smoke Volume]
     Scene --> SideWater[Side Water Indicator]
-    
-    style Furnace fill:#ff6b6b
-    style WaterDrum fill:#339af0
-    style SteamDrum fill:#868e96
-    style Fire fill:#ff922b
-    style Smoke fill:#495057
+
 ```
 
 ## Model Components
@@ -265,9 +260,6 @@ graph LR
     S2 --> Fire
     S3 --> Furnace
     
-    style S1 fill:#339af0
-    style S2 fill:#ff922b
-    style S3 fill:#ff6b6b
 ```
 
 ### 1. Brushed Metal
@@ -455,7 +447,6 @@ graph TB
     Top -.-> Boiler
     Iso -.-> Boiler
     
-    style Iso fill:#51cf66
 ```
 
 **Recommended**: Isometric view for best visibility of all components.

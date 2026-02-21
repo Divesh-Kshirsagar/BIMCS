@@ -81,9 +81,6 @@ graph TB
     H --> K
     G --> L
     
-    style F fill:#ff6b6b,stroke:#c92a2a
-    style G fill:#45b7d1,stroke:#1971c2
-    style H fill:#4ecdc4,stroke:#087f5b
 ```
 
 ## Core Components
@@ -336,11 +333,6 @@ flowchart TD
     
     UpdatePhysics --> Response[Return Response with Telemetry]
     
-    style Danger1 fill:#ff6b6b
-    style Danger2 fill:#ff6b6b
-    style Calculate fill:#fa5252
-    style Safe fill:#51cf66
-    style Predict fill:#4ecdc4
 ```
 
 **Implementation**:
@@ -405,11 +397,7 @@ graph TB
     LSTM2 --> Drop2[Dropout 0.2]
     Drop2 --> Dense[Dense Layer<br/>30 units]
     Dense --> Output[Output<br/>30 temperature predictions]
-    
-    style Input fill:#91d5ff
-    style LSTM1 fill:#4ecdc4
-    style LSTM2 fill:#4ecdc4
-    style Output fill:#b7eb8f
+
 ```
 
 **Input Features** (10 dimensions):

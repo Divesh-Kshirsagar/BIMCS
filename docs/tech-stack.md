@@ -49,10 +49,7 @@ graph TB
     React --> Node
     FastAPI --> Python
     
-    style React fill:#61dafb
-    style FastAPI fill:#009688
-    style TF fill:#ff6f00
-    style Three fill:#000000,color:#fff
+
 ```
 
 ## Frontend Stack

@@ -70,9 +70,7 @@ graph LR
     D --> B
     E --> B
     
-    style F fill:#ff6b6b
-    style E fill:#4ecdc4
-    style D fill:#45b7d1
+
 ```
 
 The system follows a **Hybrid Digital Twin** architecture combining:

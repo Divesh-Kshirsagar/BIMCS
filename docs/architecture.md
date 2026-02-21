@@ -53,10 +53,6 @@ graph TB
     State --> UI
     State --> Canvas
     
-    style Supervisor fill:#ff6b6b,stroke:#c92a2a
-    style LSTM fill:#4ecdc4,stroke:#087f5b
-    style Physics fill:#45b7d1,stroke:#1971c2
-    style Canvas fill:#ffd43b,stroke:#f08c00
 ```
 
 ## Core Design Principles
@@ -116,10 +112,6 @@ graph LR
     H --> L
     I --> K
     
-    style A fill:#ffe58f
-    style D fill:#91d5ff
-    style G fill:#b7eb8f
-    style J fill:#ffd6e7
 ```
 
 ## Component Interaction Flow
@@ -192,10 +184,6 @@ flowchart TD
     
     Update --> Return[Return State + Telemetry]
     
-    style Danger fill:#ff6b6b
-    style Clamp fill:#fa5252
-    style Safe fill:#51cf66
-    style Predict fill:#4ecdc4
 ```
 
 ## Data Flow Architecture
@@ -479,11 +467,6 @@ graph TB
     G -->|Forbidden| H[403 Forbidden]
     G -->|Allowed| I[Backend Service]
     
-    style C fill:#4ecdc4
-    style D fill:#ff6b6b
-    style F fill:#ff6b6b
-    style H fill:#ff6b6b
-    style I fill:#51cf66
 ```
 
 Required security features:

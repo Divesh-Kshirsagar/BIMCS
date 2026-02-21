@@ -35,7 +35,7 @@ pip --version
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-org/bimcs.git
+git clone https://github.com/Divesh-Kshirsagar/BIMCS.git
 cd bimcs
 ```
 
@@ -174,8 +174,6 @@ graph TB
         F[git, testing, docs]
     end
     
-    style C fill:#51cf66
-    style E fill:#4ecdc4
 ```
 
 ### Hot Module Replacement (HMR)

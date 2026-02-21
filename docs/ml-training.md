@@ -18,10 +18,7 @@ graph TB
     Dense1 --> Dropout3[Dropout 10%]
     Dropout3 --> Output[Output Layer<br/>30 units<br/>Linear activation]
     
-    style Input fill:#91d5ff
-    style LSTM1 fill:#4ecdc4
-    style LSTM2 fill:#20c997
-    style Output fill:#b7eb8f
+
 ```
 
 ### Layer-by-Layer Breakdown
@@ -72,7 +69,7 @@ graph LR
     C --> D[CSV Export]
     D --> E[data.csv]
     
-    style E fill:#ffd43b
+
 ```
 
 **File**: `data.csv`  
@@ -297,9 +294,7 @@ graph LR
     
     B --> D
     B --> E
-    
-    style D fill:#51cf66
-    style E fill:#51cf66
+
 ```
 
 **Expected Performance**:
