@@ -1312,10 +1312,7 @@
     Smoke -.uses.-&gt; SmokeHook[useSmokeParticles]
     Water -.uses.-&gt; WaterHook[useWater2Effect]
     Bubbles -.uses.-&gt; BubbleHook[useBoilingBubbles]
-
-    style Dashboard fill:#4ecdc4,stroke:#087f5b
-    style Model fill:#ffd43b,stroke:#f08c00
-    style Schematic fill:#a9e34b,stroke:#5c940d</code></pre>
+</code></pre>
 <h2 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">¶</a></h2>
 <h3 id="1-dashboardjsx">1. Dashboard.jsx<a class="headerlink" href="#1-dashboardjsx" title="Permanent link">¶</a></h3>
 <p><strong>Responsibility</strong>: Central state manager and orchestrator</p>
@@ -1404,11 +1401,7 @@
     Glow -.temperature.-&gt; State
     Bubbles -.boiling.-&gt; State
 
-    style Model fill:#ffd43b
-    style Load fill:#91d5ff
-    style Fire fill:#ff6b6b
-    style Water fill:#339af0
-    style Smoke fill:#868e96</code></pre>
+</code></pre>
 <p><strong>Key Features</strong>:</p>
 <ol>
 <li>
@@ -1447,9 +1440,7 @@
 
     Dashboard --&gt;|props| Display
 
-    style Panel fill:#ffe58f
-    style Slider fill:#ff6b6b
-    style Toggle fill:#51cf66</code></pre>
+</code></pre>
 <p><strong>Input Handling</strong>:
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">input</span>
 <a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span><span class="na">type</span><span class="o">=</span><span class="s">"range"</span>
@@ -1589,8 +1580,7 @@
     Model3D --&gt; Display2[Update 3D Effects]
     Charts --&gt; Display3[Update Charts]
     Telemetry --&gt; Display4[Update Metrics]
-
-    style DashboardState fill:#4ecdc4,stroke:#0c8599,stroke-width:3px</code></pre>
+</code></pre>
 <h3 id="props-drilling">Props Drilling<a class="headerlink" href="#props-drilling" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">// Dashboard.jsx</span>
 <a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="o">&lt;</span><span class="nx">ControlPanel</span>

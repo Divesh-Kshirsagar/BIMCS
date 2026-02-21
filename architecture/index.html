@@ -1060,11 +1060,7 @@
     API --&gt; State
     State --&gt; UI
     State --&gt; Canvas
-
-    style Supervisor fill:#ff6b6b,stroke:#c92a2a
-    style LSTM fill:#4ecdc4,stroke:#087f5b
-    style Physics fill:#45b7d1,stroke:#1971c2
-    style Canvas fill:#ffd43b,stroke:#f08c00</code></pre>
+</code></pre>
 <h2 id="core-design-principles">Core Design Principles<a class="headerlink" href="#core-design-principles" title="Permanent link">¶</a></h2>
 <h3 id="1-hybrid-digital-twin-approach">1. Hybrid Digital Twin Approach<a class="headerlink" href="#1-hybrid-digital-twin-approach" title="Permanent link">¶</a></h3>
 <p>The system combines two complementary modeling strategies:</p>
@@ -1140,11 +1136,7 @@
     G --&gt; I
     H --&gt; L
     I --&gt; K
-
-    style A fill:#ffe58f
-    style D fill:#91d5ff
-    style G fill:#b7eb8f
-    style J fill:#ffd6e7</code></pre>
+</code></pre>
 <h2 id="component-interaction-flow">Component Interaction Flow<a class="headerlink" href="#component-interaction-flow" title="Permanent link">¶</a></h2>
 <h3 id="simulation-loop-every-update-cycle">Simulation Loop (Every Update Cycle)<a class="headerlink" href="#simulation-loop-every-update-cycle" title="Permanent link">¶</a></h3>
 <pre class="mermaid"><code>sequenceDiagram
@@ -1207,11 +1199,7 @@
     Apply --&gt; Update
 
     Update --&gt; Return[Return State + Telemetry]
-
-    style Danger fill:#ff6b6b
-    style Clamp fill:#fa5252
-    style Safe fill:#51cf66
-    style Predict fill:#4ecdc4</code></pre>
+</code></pre>
 <h2 id="data-flow-architecture">Data Flow Architecture<a class="headerlink" href="#data-flow-architecture" title="Permanent link">¶</a></h2>
 <h3 id="requestresponse-pipeline">Request/Response Pipeline<a class="headerlink" href="#requestresponse-pipeline" title="Permanent link">¶</a></h3>
 <pre class="mermaid"><code>graph LR
@@ -1457,12 +1445,7 @@
     E --&gt;|OK| G{Authorization}
     G --&gt;|Forbidden| H[403 Forbidden]
     G --&gt;|Allowed| I[Backend Service]
-
-    style C fill:#4ecdc4
-    style D fill:#ff6b6b
-    style F fill:#ff6b6b
-    style H fill:#ff6b6b
-    style I fill:#51cf66</code></pre>
+</code></pre>
 <p>Required security features:
 - JWT authentication
 - Role-based access control (Operator, Engineer, Admin)

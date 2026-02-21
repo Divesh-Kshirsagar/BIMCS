@@ -1144,10 +1144,7 @@
     H --&gt; J
     H --&gt; K
     G --&gt; L
-
-    style F fill:#ff6b6b,stroke:#c92a2a
-    style G fill:#45b7d1,stroke:#1971c2
-    style H fill:#4ecdc4,stroke:#087f5b</code></pre>
+</code></pre>
 <h2 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">¶</a></h2>
 <h3 id="1-mainpy-fastapi-application">1. main.py - FastAPI Application<a class="headerlink" href="#1-mainpy-fastapi-application" title="Permanent link">¶</a></h3>
 <p><strong>Responsibilities</strong>:
@@ -1363,12 +1360,7 @@ $$</p>
     ApplyOriginal --&gt; UpdatePhysics
 
     UpdatePhysics --&gt; Response[Return Response with Telemetry]
-
-    style Danger1 fill:#ff6b6b
-    style Danger2 fill:#ff6b6b
-    style Calculate fill:#fa5252
-    style Safe fill:#51cf66
-    style Predict fill:#4ecdc4</code></pre>
+</code></pre>
 <p><strong>Implementation</strong>:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">simulate_step</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">SimulationRequest</span><span class="p">):</span>
 <a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="n">user_input</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user_fire_intensity</span>
@@ -1425,11 +1417,7 @@ $$</p>
     LSTM2 --&gt; Drop2[Dropout 0.2]
     Drop2 --&gt; Dense[Dense Layer&lt;br/&gt;30 units]
     Dense --&gt; Output[Output&lt;br/&gt;30 temperature predictions]
-
-    style Input fill:#91d5ff
-    style LSTM1 fill:#4ecdc4
-    style LSTM2 fill:#4ecdc4
-    style Output fill:#b7eb8f</code></pre>
+</code></pre>
 <p><strong>Input Features</strong> (10 dimensions):
 1. Valve Position (0-100%)
 2. Furnace Pressure (MPa)
