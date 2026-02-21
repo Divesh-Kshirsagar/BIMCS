@@ -1,0 +1,1830 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Boiler Intelligent Monitoring &amp; Control System - Industrial Digital Twin" name="description"/>
+<meta content="B.I.M.C.S Team" name="author"/>
+<link href="https://bimcs.example.com/frontend/" rel="canonical"/>
+<link href="../tech-stack/" rel="prev"/>
+<link href="../backend/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.2" name="generator"/>
+<title>Frontend - B.I.M.C.S Documentation</title>
+<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="cyan" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#frontend-architecture">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="B.I.M.C.S Documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="B.I.M.C.S Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 18v2h4v-2zm0-4v2h10v-2zm6 4v2h4v-2zm6-4v2h4v-2zm0 4v2h4v-2zM2 22V8l5 4V8l5 4V8l5 4 1-10h3l1 10v10z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            B.I.M.C.S Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Frontend
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="cyan" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="cyan" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/your-org/bimcs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</div>
+<div class="md-source__repository">
+    bimcs
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../architecture/">
+          
+  
+  
+  Architecture
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="./">
+          
+  
+  
+  Components
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../api-reference/">
+          
+  
+  
+  Reference
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../development/">
+          
+  
+  
+  Development
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="B.I.M.C.S Documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="B.I.M.C.S Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 18v2h4v-2zm0-4v2h10v-2zm6 4v2h4v-2zm6-4v2h4v-2zm0 4v2h4v-2zM2 22V8l5 4V8l5 4V8l5 4 1-10h3l1 10v10z"></path></svg>
+</a>
+    B.I.M.C.S Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/your-org/bimcs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</div>
+<div class="md-source__repository">
+    bimcs
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../architecture/">
+<span class="md-ellipsis">
+    
+  
+    System Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tech-stack/">
+<span class="md-ellipsis">
+    
+  
+    Technology Stack
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Components
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Components
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#technology-stack">
+<span class="md-ellipsis">
+      
+        Technology Stack
+      
+    </span>
+</a>
+<nav aria-label="Technology Stack" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-framework">
+<span class="md-ellipsis">
+      
+        Core Framework
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d-graphics">
+<span class="md-ellipsis">
+      
+        3D Graphics
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#styling-ui">
+<span class="md-ellipsis">
+      
+        Styling &amp; UI
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-visualization">
+<span class="md-ellipsis">
+      
+        Data Visualization
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#networking">
+<span class="md-ellipsis">
+      
+        Networking
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#project-structure">
+<span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-architecture">
+<span class="md-ellipsis">
+      
+        Component Architecture
+      
+    </span>
+</a>
+<nav aria-label="Component Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-hierarchy">
+<span class="md-ellipsis">
+      
+        Component Hierarchy
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-components">
+<span class="md-ellipsis">
+      
+        Core Components
+      
+    </span>
+</a>
+<nav aria-label="Core Components" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-dashboardjsx">
+<span class="md-ellipsis">
+      
+        1. Dashboard.jsx
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-modeljsx">
+<span class="md-ellipsis">
+      
+        2. Model.jsx
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-controlpaneljsx">
+<span class="md-ellipsis">
+      
+        3. ControlPanel.jsx
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-telemetrypaneljsx">
+<span class="md-ellipsis">
+      
+        4. TelemetryPanel.jsx
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-trendchartjsx">
+<span class="md-ellipsis">
+      
+        5. TrendChart.jsx
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#custom-hooks">
+<span class="md-ellipsis">
+      
+        Custom Hooks
+      
+    </span>
+</a>
+<nav aria-label="Custom Hooks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usefireparticlesjs">
+<span class="md-ellipsis">
+      
+        useFireParticles.js
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usesmokeparticlesjs">
+<span class="md-ellipsis">
+      
+        useSmokeParticles.js
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usewater2effectjs">
+<span class="md-ellipsis">
+      
+        useWater2Effect.js
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#state-management-pattern">
+<span class="md-ellipsis">
+      
+        State Management Pattern
+      
+    </span>
+</a>
+<nav aria-label="State Management Pattern" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#unidirectional-data-flow">
+<span class="md-ellipsis">
+      
+        Unidirectional Data Flow
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#props-drilling">
+<span class="md-ellipsis">
+      
+        Props Drilling
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d-rendering-pipeline">
+<span class="md-ellipsis">
+      
+        3D Rendering Pipeline
+      
+    </span>
+</a>
+<nav aria-label="3D Rendering Pipeline" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#react-three-fiber-setup">
+<span class="md-ellipsis">
+      
+        React Three Fiber Setup
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rendering-flow">
+<span class="md-ellipsis">
+      
+        Rendering Flow
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-optimizations">
+<span class="md-ellipsis">
+      
+        Performance Optimizations
+      
+    </span>
+</a>
+<nav aria-label="Performance Optimizations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-memoization">
+<span class="md-ellipsis">
+      
+        1. Memoization
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-debouncing-user-input">
+<span class="md-ellipsis">
+      
+        2. Debouncing User Input
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-conditional-rendering">
+<span class="md-ellipsis">
+      
+        3. Conditional Rendering
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-useframe-optimization">
+<span class="md-ellipsis">
+      
+        4. useFrame Optimization
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#responsive-design">
+<span class="md-ellipsis">
+      
+        Responsive Design
+      
+    </span>
+</a>
+<nav aria-label="Responsive Design" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#breakpoint-strategy">
+<span class="md-ellipsis">
+      
+        Breakpoint Strategy
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#css-approach">
+<span class="md-ellipsis">
+      
+        CSS Approach
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#error-handling">
+<span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+</a>
+<nav aria-label="Error Handling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#api-error-boundaries">
+<span class="md-ellipsis">
+      
+        API Error Boundaries
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#visual-error-feedback">
+<span class="md-ellipsis">
+      
+        Visual Error Feedback
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-strategy-future">
+<span class="md-ellipsis">
+      
+        Testing Strategy (Future)
+      
+    </span>
+</a>
+<nav aria-label="Testing Strategy (Future)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recommended-tests">
+<span class="md-ellipsis">
+      
+        Recommended Tests
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../backend/">
+<span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../3d-model/">
+<span class="md-ellipsis">
+    
+  
+    3D Model
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../api-reference/">
+<span class="md-ellipsis">
+    
+  
+    API Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ml-training/">
+<span class="md-ellipsis">
+    
+  
+    ML Model Training
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../development/">
+<span class="md-ellipsis">
+    
+  
+    Setup Guide
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../contributing/">
+<span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#technology-stack">
+<span class="md-ellipsis">
+      
+        Technology Stack
+      
+    </span>
+</a>
+<nav aria-label="Technology Stack" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-framework">
+<span class="md-ellipsis">
+      
+        Core Framework
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d-graphics">
+<span class="md-ellipsis">
+      
+        3D Graphics
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#styling-ui">
+<span class="md-ellipsis">
+      
+        Styling &amp; UI
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-visualization">
+<span class="md-ellipsis">
+      
+        Data Visualization
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#networking">
+<span class="md-ellipsis">
+      
+        Networking
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#project-structure">
+<span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-architecture">
+<span class="md-ellipsis">
+      
+        Component Architecture
+      
+    </span>
+</a>
+<nav aria-label="Component Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-hierarchy">
+<span class="md-ellipsis">
+      
+        Component Hierarchy
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-components">
+<span class="md-ellipsis">
+      
+        Core Components
+      
+    </span>
+</a>
+<nav aria-label="Core Components" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-dashboardjsx">
+<span class="md-ellipsis">
+      
+        1. Dashboard.jsx
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-modeljsx">
+<span class="md-ellipsis">
+      
+        2. Model.jsx
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-controlpaneljsx">
+<span class="md-ellipsis">
+      
+        3. ControlPanel.jsx
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-telemetrypaneljsx">
+<span class="md-ellipsis">
+      
+        4. TelemetryPanel.jsx
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-trendchartjsx">
+<span class="md-ellipsis">
+      
+        5. TrendChart.jsx
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#custom-hooks">
+<span class="md-ellipsis">
+      
+        Custom Hooks
+      
+    </span>
+</a>
+<nav aria-label="Custom Hooks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usefireparticlesjs">
+<span class="md-ellipsis">
+      
+        useFireParticles.js
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usesmokeparticlesjs">
+<span class="md-ellipsis">
+      
+        useSmokeParticles.js
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usewater2effectjs">
+<span class="md-ellipsis">
+      
+        useWater2Effect.js
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#state-management-pattern">
+<span class="md-ellipsis">
+      
+        State Management Pattern
+      
+    </span>
+</a>
+<nav aria-label="State Management Pattern" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#unidirectional-data-flow">
+<span class="md-ellipsis">
+      
+        Unidirectional Data Flow
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#props-drilling">
+<span class="md-ellipsis">
+      
+        Props Drilling
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d-rendering-pipeline">
+<span class="md-ellipsis">
+      
+        3D Rendering Pipeline
+      
+    </span>
+</a>
+<nav aria-label="3D Rendering Pipeline" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#react-three-fiber-setup">
+<span class="md-ellipsis">
+      
+        React Three Fiber Setup
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rendering-flow">
+<span class="md-ellipsis">
+      
+        Rendering Flow
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-optimizations">
+<span class="md-ellipsis">
+      
+        Performance Optimizations
+      
+    </span>
+</a>
+<nav aria-label="Performance Optimizations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-memoization">
+<span class="md-ellipsis">
+      
+        1. Memoization
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-debouncing-user-input">
+<span class="md-ellipsis">
+      
+        2. Debouncing User Input
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-conditional-rendering">
+<span class="md-ellipsis">
+      
+        3. Conditional Rendering
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-useframe-optimization">
+<span class="md-ellipsis">
+      
+        4. useFrame Optimization
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#responsive-design">
+<span class="md-ellipsis">
+      
+        Responsive Design
+      
+    </span>
+</a>
+<nav aria-label="Responsive Design" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#breakpoint-strategy">
+<span class="md-ellipsis">
+      
+        Breakpoint Strategy
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#css-approach">
+<span class="md-ellipsis">
+      
+        CSS Approach
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#error-handling">
+<span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+</a>
+<nav aria-label="Error Handling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#api-error-boundaries">
+<span class="md-ellipsis">
+      
+        API Error Boundaries
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#visual-error-feedback">
+<span class="md-ellipsis">
+      
+        Visual Error Feedback
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-strategy-future">
+<span class="md-ellipsis">
+      
+        Testing Strategy (Future)
+      
+    </span>
+</a>
+<nav aria-label="Testing Strategy (Future)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recommended-tests">
+<span class="md-ellipsis">
+      
+        Recommended Tests
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="frontend-architecture">Frontend Architecture<a class="headerlink" href="#frontend-architecture" title="Permanent link">¶</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>The B.I.M.C.S frontend is a high-fidelity 3D visualization dashboard built with modern web technologies. It renders a photorealistic digital twin of the industrial boiler and provides an intuitive interface for monitoring and control.</p>
+<h2 id="technology-stack">Technology Stack<a class="headerlink" href="#technology-stack" title="Permanent link">¶</a></h2>
+<h3 id="core-framework">Core Framework<a class="headerlink" href="#core-framework" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>React 19</strong>: Latest React with concurrent features</li>
+<li><strong>Vite</strong>: Lightning-fast build tool with HMR</li>
+<li><strong>TypeScript</strong>: Type-safe JavaScript development</li>
+</ul>
+<h3 id="3d-graphics">3D Graphics<a class="headerlink" href="#3d-graphics" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Three.js v0.182</strong>: WebGL 3D engine</li>
+<li><strong>@react-three/fiber v9.5</strong>: React renderer for Three.js</li>
+<li><strong>@react-three/drei v10.7</strong>: Useful helpers for R3F</li>
+</ul>
+<h3 id="styling-ui">Styling &amp; UI<a class="headerlink" href="#styling-ui" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Tailwind CSS v4</strong>: Utility-first CSS framework</li>
+<li><strong>Lucide React</strong>: Beautiful icon library</li>
+<li><strong>GSAP</strong>: Advanced animation library</li>
+</ul>
+<h3 id="data-visualization">Data Visualization<a class="headerlink" href="#data-visualization" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Recharts v3.6</strong>: React charting library</li>
+</ul>
+<h3 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Axios v1.13</strong>: Promise-based HTTP client</li>
+</ul>
+<h2 id="project-structure">Project Structure<a class="headerlink" href="#project-structure" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>frontend/
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>├── src/
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>│   ├── components/
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>│   │   ├── Dashboard.jsx          # Main state manager
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>│   │   ├── BoilerSchematic.jsx    # 3D scene wrapper
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>│   │   ├── Model.jsx               # 3D boiler model
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>│   │   ├── ControlPanel.jsx        # User input controls
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>│   │   ├── TelemetryPanel.jsx      # Data display
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>│   │   ├── TrendChart.jsx          # Temperature charts
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>│   │   ├── useFireParticles.js     # Fire effect hook
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>│   │   ├── useSmokeParticles.js    # Smoke effect hook
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>│   │   ├── useWater2Effect.js      # Water shader hook
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>│   │   ├── useLavaEffect.js        # Lava/heat effect hook
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>│   │   └── useBoilingBubbles.js    # Bubble effect hook
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>│   ├── App.jsx                     # Root component
+<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>│   ├── main.jsx                    # Entry point
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>│   ├── index.css                   # Global styles
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>│   └── style.css                   # Additional styles
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>├── public/                         # Static assets
+<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>├── index.html                      # HTML template
+<a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a>├── vite.config.js                  # Vite configuration
+<a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a>├── tsconfig.json                   # TypeScript config
+<a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>└── package.json                    # Dependencies
+</code></pre></div>
+<h2 id="component-architecture">Component Architecture<a class="headerlink" href="#component-architecture" title="Permanent link">¶</a></h2>
+<h3 id="component-hierarchy">Component Hierarchy<a class="headerlink" href="#component-hierarchy" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>graph TB
+    App[App.jsx] --&gt; Dashboard[Dashboard.jsx]
+
+    Dashboard --&gt; Controls[ControlPanel.jsx]
+    Dashboard --&gt; Schematic[BoilerSchematic.jsx]
+    Dashboard --&gt; Telemetry[TelemetryPanel.jsx]
+    Dashboard --&gt; Chart[TrendChart.jsx]
+
+    Schematic --&gt; Model[Model.jsx]
+
+    Model --&gt; Boiler[Boiler glTF Mesh]
+    Model --&gt; Fire[Fire Effect]
+    Model --&gt; Water[Water Shader]
+    Model --&gt; Smoke[Smoke Particles]
+    Model --&gt; Bubbles[Boiling Bubbles]
+
+    Fire -.uses.-&gt; FireHook[useFireParticles]
+    Smoke -.uses.-&gt; SmokeHook[useSmokeParticles]
+    Water -.uses.-&gt; WaterHook[useWater2Effect]
+    Bubbles -.uses.-&gt; BubbleHook[useBoilingBubbles]
+
+    style Dashboard fill:#4ecdc4,stroke:#087f5b
+    style Model fill:#ffd43b,stroke:#f08c00
+    style Schematic fill:#a9e34b,stroke:#5c940d</code></pre>
+<h2 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">¶</a></h2>
+<h3 id="1-dashboardjsx">1. Dashboard.jsx<a class="headerlink" href="#1-dashboardjsx" title="Permanent link">¶</a></h3>
+<p><strong>Responsibility</strong>: Central state manager and orchestrator</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">// Key State Variables</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">fireIntensity</span><span class="p">,</span><span class="w"> </span><span class="nx">setFireIntensity</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">30</span><span class="p">);</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">aiModeEnabled</span><span class="p">,</span><span class="w"> </span><span class="nx">setAiModeEnabled</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">simulationState</span><span class="p">,</span><span class="w"> </span><span class="nx">setSimulationState</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">({...});</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">aiData</span><span class="p">,</span><span class="w"> </span><span class="nx">setAiData</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">({...});</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">systemStatus</span><span class="p">,</span><span class="w"> </span><span class="nx">setSystemStatus</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s1">'NORMAL'</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Data Flow Diagram</strong>:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant UI as User Interface
+    participant DS as Dashboard State
+    participant API as API Client
+    participant BE as Backend
+
+    UI-&gt;&gt;DS: User adjusts Fire Slider
+    DS-&gt;&gt;DS: Update fireIntensity
+    DS-&gt;&gt;API: POST /simulate
+    API-&gt;&gt;BE: HTTP Request
+    BE--&gt;&gt;API: SimulationResponse
+    API--&gt;&gt;DS: Update state
+    DS-&gt;&gt;UI: Re-render all children
+    Note over UI: 3D effects, charts, panels update</code></pre>
+<p><strong>Key Functions</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Triggers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>runSimulation()</code></td>
+<td>Sends current inputs to backend</td>
+<td>Every 1 second (auto) or user change</td>
+</tr>
+<tr>
+<td><code>handleFireChange()</code></td>
+<td>Updates fire slider state</td>
+<td>User input with debounce</td>
+</tr>
+<tr>
+<td><code>handleAIModeToggle()</code></td>
+<td>Enables/disables AI supervisor</td>
+<td>Toggle switch</td>
+</tr>
+<tr>
+<td><code>handleReset()</code></td>
+<td>Resets simulation to initial state</td>
+<td>Reset button</td>
+</tr>
+<tr>
+<td><code>playAlertSound()</code></td>
+<td>Audio feedback for critical alerts</td>
+<td>System status change</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lifecycle</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="c1">// Auto-simulation loop</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(</span><span class="nx">runSimulation</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">);</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">fireIntensity</span><span class="p">,</span><span class="w"> </span><span class="nx">aiModeEnabled</span><span class="p">]);</span>
+</code></pre></div></p>
+<h3 id="2-modeljsx">2. Model.jsx<a class="headerlink" href="#2-modeljsx" title="Permanent link">¶</a></h3>
+<p><strong>Responsibility</strong>: 3D scene rendering and visual effects</p>
+<p><strong>Visual Effects Pipeline</strong>:</p>
+<pre class="mermaid"><code>graph LR
+    State[Simulation State] --&gt; Model[Model.jsx]
+
+    Model --&gt; Load[Load glTF Model]
+    Model --&gt; Fire[Fire Particles]
+    Model --&gt; Water[Water Shader]
+    Model --&gt; Smoke[Smoke Particles]
+    Model --&gt; Glow[Heat Glow]
+    Model --&gt; Bubbles[Boiling Bubbles]
+
+    Fire -.intensity.-&gt; State
+    Water -.level.-&gt; State
+    Smoke -.amount.-&gt; State
+    Glow -.temperature.-&gt; State
+    Bubbles -.boiling.-&gt; State
+
+    style Model fill:#ffd43b
+    style Load fill:#91d5ff
+    style Fire fill:#ff6b6b
+    style Water fill:#339af0
+    style Smoke fill:#868e96</code></pre>
+<p><strong>Key Features</strong>:</p>
+<ol>
+<li>
+<p><strong>glTF Model Loading</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">scene</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useGLTF</span><span class="p">(</span><span class="s1">'/model.glb'</span><span class="p">);</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Dynamic Material Modifications</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">// Fire intensity mapping</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">fireScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fireIntensity</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nx">fireRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">scale</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">fireScale</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1">// Water level animation</span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="nx">waterRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">waterLevel</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Custom Shaders</strong>:</p>
+</li>
+<li>Water surface with waves and reflections</li>
+<li>Fire glow with emissive materials</li>
+<li>Heat distortion effects</li>
+</ol>
+<h3 id="3-controlpaneljsx">3. ControlPanel.jsx<a class="headerlink" href="#3-controlpaneljsx" title="Permanent link">¶</a></h3>
+<p><strong>Responsibility</strong>: User input interface</p>
+<pre class="mermaid"><code>graph TB
+    Panel[ControlPanel] --&gt; Slider[Fire Intensity Slider]
+    Panel --&gt; Toggle[AI Mode Toggle]
+    Panel --&gt; Button[Reset Button]
+    Panel --&gt; Display[Status Indicators]
+
+    Slider --&gt;|onChange| Dashboard
+    Toggle --&gt;|onClick| Dashboard
+    Button --&gt;|onClick| Dashboard
+
+    Dashboard --&gt;|props| Display
+
+    style Panel fill:#ffe58f
+    style Slider fill:#ff6b6b
+    style Toggle fill:#51cf66</code></pre>
+<p><strong>Input Handling</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">input</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span><span class="na">type</span><span class="o">=</span><span class="s">"range"</span>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">  </span><span class="na">min</span><span class="o">=</span><span class="s">"0"</span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">  </span><span class="na">max</span><span class="o">=</span><span class="s">"100"</span>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">  </span><span class="na">value</span><span class="o">=</span><span class="p">{</span><span class="nx">fireIntensity</span><span class="p">}</span>
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">  </span><span class="na">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">onFireChange</span><span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">))}</span>
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">  </span><span class="na">className</span><span class="o">=</span><span class="s">"slider"</span>
+<a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="p">/&gt;</span>
+</code></pre></div></p>
+<p><strong>AI Mode Indicator</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p">{</span><span class="nx">aiModeEnabled</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"ai-active-badge"</span><span class="p">&gt;</span>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">Shield</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"icon"</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="nx">AI</span><span class="w"> </span><span class="nx">Supervisor</span><span class="w"> </span><span class="nx">Active</span>
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">  </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="p">)}</span>
+</code></pre></div></p>
+<h3 id="4-telemetrypaneljsx">4. TelemetryPanel.jsx<a class="headerlink" href="#4-telemetrypaneljsx" title="Permanent link">¶</a></h3>
+<p><strong>Responsibility</strong>: Real-time data display</p>
+<p><strong>Metrics Displayed</strong>:
+- Current Temperature (°C)
+- System Pressure (MPa)
+- Water Level (%)
+- Fire Intensity (%)
+- Steam Generation Rate
+- AI Prediction Status</p>
+<p><strong>Visual Indicators</strong>:
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; NORMAL: Temp &lt; 580°C
+    NORMAL --&gt; WARNING: Temp &gt; 580°C
+    WARNING --&gt; CRITICAL: Temp &gt; 600°C
+    CRITICAL --&gt; TRIPPED: Temp &gt; 630°C
+    WARNING --&gt; NORMAL: Temp drops
+    CRITICAL --&gt; WARNING: Temp drops
+    TRIPPED --&gt; [*]: Reset
+
+    note right of NORMAL: Green indicator
+    note right of WARNING: Yellow indicator
+    note right of CRITICAL: Red indicator
+    note right of TRIPPED: System shutdown</code></pre></p>
+<h3 id="5-trendchartjsx">5. TrendChart.jsx<a class="headerlink" href="#5-trendchartjsx" title="Permanent link">¶</a></h3>
+<p><strong>Responsibility</strong>: Temperature history visualization</p>
+<p><strong>Features</strong>:
+- Dual-line chart (Actual vs Predicted)
+- Real-time updates
+- Scrolling window (last 30 data points)
+- Color-coded by status</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">&lt;</span><span class="nt">LineChart</span><span class="w"> </span><span class="na">data</span><span class="o">=</span><span class="p">{</span><span class="nx">chartHistory</span><span class="p">}&gt;</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">Line</span><span class="w"> </span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="na">dataKey</span><span class="o">=</span><span class="s">"actual"</span><span class="w"> </span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="na">stroke</span><span class="o">=</span><span class="s">"#ff6b6b"</span><span class="w"> </span>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="na">name</span><span class="o">=</span><span class="s">"Actual Temp"</span>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span><span class="p">/&gt;</span>
+<a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">Line</span><span class="w"> </span>
+<a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="na">dataKey</span><span class="o">=</span><span class="s">"predicted"</span><span class="w"> </span>
+<a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">    </span><span class="na">stroke</span><span class="o">=</span><span class="s">"#4ecdc4"</span><span class="w"> </span>
+<a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">    </span><span class="na">name</span><span class="o">=</span><span class="s">"AI Prediction"</span>
+<a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="na">strokeDasharray</span><span class="o">=</span><span class="s">"5 5"</span>
+<a href="#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">  </span><span class="p">/&gt;</span>
+<a href="#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="p">&lt;/</span><span class="nt">LineChart</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="custom-hooks">Custom Hooks<a class="headerlink" href="#custom-hooks" title="Permanent link">¶</a></h2>
+<h3 id="usefireparticlesjs">useFireParticles.js<a class="headerlink" href="#usefireparticlesjs" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Create realistic fire particle system</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1">// Particle system configuration</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">particleCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">fireIntensity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">particles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useMemo</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">positions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Float32Array</span><span class="p">(</span><span class="nx">particleCount</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">  </span><span class="c1">// Generate random positions in flame shape</span>
+<a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">particleCount</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">    </span><span class="nx">positions</span><span class="p">[</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">    </span><span class="nx">positions</span><span class="p">[</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">    </span><span class="nx">positions</span><span class="p">[</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<a href="#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">  </span><span class="p">}</span>
+<a href="#__codelineno-8-11" id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">positions</span><span class="p">;</span>
+<a href="#__codelineno-8-12" id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">fireIntensity</span><span class="p">]);</span>
+</code></pre></div>
+<p><strong>Animation</strong>:
+- Upward motion with turbulence
+- Color gradient (yellow → orange → red)
+- Size variation based on lifetime
+- Heat distortion effect</p>
+<h3 id="usesmokeparticlesjs">useSmokeParticles.js<a class="headerlink" href="#usesmokeparticlesjs" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Smoke emission from chimney</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1">// Smoke generation rate</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">smokeRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fireIntensity</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">particleOpacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">smokeRate</span><span class="p">;</span>
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>
+<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="c1">// Upward drift with dissipation</span>
+<a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="nx">useFrame</span><span class="p">((</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">delta</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">  </span><span class="nx">particles</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">delta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">opacity</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="nx">delta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+<a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">opacity</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="nx">resetParticle</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+<a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">  </span><span class="p">});</span>
+<a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="p">});</span>
+</code></pre></div>
+<h3 id="usewater2effectjs">useWater2Effect.js<a class="headerlink" href="#usewater2effectjs" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Realistic water surface shader</p>
+<p><strong>Shader Features</strong>:
+- Wave animation
+- Reflection mapping
+- Refraction distortion
+- Foam at edges</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="c1">// Vertex shader (simplified)</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="k">varying</span><span class="w"> </span><span class="kt">vec2</span><span class="w"> </span><span class="n">vUv</span><span class="p">;</span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">  </span><span class="n">vUv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uv</span><span class="p">;</span>
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">  </span><span class="kt">vec3</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">  </span><span class="n">pos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">pos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">5.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">time</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span>
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">  </span><span class="nb">gl_Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">projectionMatrix</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">modelViewMatrix</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="p">}</span>
+<a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a>
+<a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="c1">// Fragment shader</span>
+<a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="k">uniform</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">waterLevel</span><span class="p">;</span>
+<a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-10-13" id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">  </span><span class="kt">vec3</span><span class="w"> </span><span class="n">waterColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">);</span>
+<a href="#__codelineno-10-14" id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w">  </span><span class="nb">gl_FragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">waterColor</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">);</span>
+<a href="#__codelineno-10-15" id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="state-management-pattern">State Management Pattern<a class="headerlink" href="#state-management-pattern" title="Permanent link">¶</a></h2>
+<h3 id="unidirectional-data-flow">Unidirectional Data Flow<a class="headerlink" href="#unidirectional-data-flow" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>graph TB
+    UserInput[User Input] --&gt; DashboardState[Dashboard State]
+    DashboardState --&gt; APICall[API Call]
+    APICall --&gt; BackendResponse[Backend Response]
+    BackendResponse --&gt; UpdateState[Update State]
+    UpdateState --&gt; RenderComponents[Re-render Children]
+
+    RenderComponents --&gt; Controls[ControlPanel]
+    RenderComponents --&gt; Model3D[Model.jsx]
+    RenderComponents --&gt; Charts[TrendChart]
+    RenderComponents --&gt; Telemetry[TelemetryPanel]
+
+    Controls --&gt; Display1[Display UI]
+    Model3D --&gt; Display2[Update 3D Effects]
+    Charts --&gt; Display3[Update Charts]
+    Telemetry --&gt; Display4[Update Metrics]
+
+    style DashboardState fill:#4ecdc4,stroke:#0c8599,stroke-width:3px</code></pre>
+<h3 id="props-drilling">Props Drilling<a class="headerlink" href="#props-drilling" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">// Dashboard.jsx</span>
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="o">&lt;</span><span class="nx">ControlPanel</span>
+<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">  </span><span class="nx">fireIntensity</span><span class="o">=</span><span class="p">{</span><span class="nx">fireIntensity</span><span class="p">}</span>
+<a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">  </span><span class="nx">onFireChange</span><span class="o">=</span><span class="p">{</span><span class="nx">handleFireChange</span><span class="p">}</span>
+<a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">  </span><span class="nx">aiModeEnabled</span><span class="o">=</span><span class="p">{</span><span class="nx">aiModeEnabled</span><span class="p">}</span>
+<a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">  </span><span class="nx">onAIModeToggle</span><span class="o">=</span><span class="p">{</span><span class="nx">handleAIModeToggle</span><span class="p">}</span>
+<a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">  </span><span class="nx">systemStatus</span><span class="o">=</span><span class="p">{</span><span class="nx">systemStatus</span><span class="p">}</span>
+<a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="err">/&gt;</span>
+<a href="#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a>
+<a href="#__codelineno-11-10" id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="o">&lt;</span><span class="nx">Model</span>
+<a href="#__codelineno-11-11" id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">  </span><span class="nx">fireIntensity</span><span class="o">=</span><span class="p">{</span><span class="nx">simulationState</span><span class="p">.</span><span class="nx">fire_intensity</span><span class="p">}</span>
+<a href="#__codelineno-11-12" id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">  </span><span class="nx">waterLevel</span><span class="o">=</span><span class="p">{</span><span class="nx">simulationState</span><span class="p">.</span><span class="nx">water_level</span><span class="p">}</span>
+<a href="#__codelineno-11-13" id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">  </span><span class="nx">pressure</span><span class="o">=</span><span class="p">{</span><span class="nx">simulationState</span><span class="p">.</span><span class="nx">pressure</span><span class="p">}</span>
+<a href="#__codelineno-11-14" id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">  </span><span class="nx">temperature</span><span class="o">=</span><span class="p">{</span><span class="nx">simulationState</span><span class="p">.</span><span class="nx">temperature</span><span class="p">}</span>
+<a href="#__codelineno-11-15" id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="err">/&gt;</span>
+<a href="#__codelineno-11-16" id="__codelineno-11-16" name="__codelineno-11-16"></a>
+<a href="#__codelineno-11-17" id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="o">&lt;</span><span class="nx">TrendChart</span>
+<a href="#__codelineno-11-18" id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">  </span><span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">chartHistory</span><span class="p">}</span>
+<a href="#__codelineno-11-19" id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="w">  </span><span class="nx">predictedTemps</span><span class="o">=</span><span class="p">{</span><span class="nx">aiData</span><span class="p">.</span><span class="nx">predicted_temps_series</span><span class="p">}</span>
+<a href="#__codelineno-11-20" id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="err">/&gt;</span>
+</code></pre></div>
+<h2 id="3d-rendering-pipeline">3D Rendering Pipeline<a class="headerlink" href="#3d-rendering-pipeline" title="Permanent link">¶</a></h2>
+<h3 id="react-three-fiber-setup">React Three Fiber Setup<a class="headerlink" href="#react-three-fiber-setup" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="p">&lt;</span><span class="nt">Canvas</span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span><span class="na">camera</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">],</span><span class="w"> </span><span class="nx">fov</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="w"> </span><span class="p">}}</span>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">  </span><span class="na">shadows</span>
+<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">  </span><span class="na">gl</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">antialias</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}}</span>
+<a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="p">&gt;</span>
+<a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">  </span><span class="p">{</span><span class="cm">/* Lighting */</span><span class="p">}</span>
+<a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">ambientLight</span><span class="w"> </span><span class="na">intensity</span><span class="o">=</span><span class="p">{</span><span class="mf">0.5</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">directionalLight</span><span class="w"> </span><span class="na">position</span><span class="o">=</span><span class="p">{[</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">]}</span><span class="w"> </span><span class="na">intensity</span><span class="o">=</span><span class="p">{</span><span class="mf">1</span><span class="p">}</span><span class="w"> </span><span class="na">castShadow</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a>
+<a href="#__codelineno-12-10" id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">  </span><span class="p">{</span><span class="cm">/* Environment */</span><span class="p">}</span>
+<a href="#__codelineno-12-11" id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">Environment</span><span class="w"> </span><span class="na">preset</span><span class="o">=</span><span class="s">"warehouse"</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-12-12" id="__codelineno-12-12" name="__codelineno-12-12"></a>
+<a href="#__codelineno-12-13" id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="w">  </span><span class="p">{</span><span class="cm">/* Camera Controls */</span><span class="p">}</span>
+<a href="#__codelineno-12-14" id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">OrbitControls</span><span class="w"> </span>
+<a href="#__codelineno-12-15" id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="w">    </span><span class="na">enableZoom</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span>
+<a href="#__codelineno-12-16" id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">    </span><span class="na">maxDistance</span><span class="o">=</span><span class="p">{</span><span class="mf">15</span><span class="p">}</span>
+<a href="#__codelineno-12-17" id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">    </span><span class="na">minDistance</span><span class="o">=</span><span class="p">{</span><span class="mf">3</span><span class="p">}</span>
+<a href="#__codelineno-12-18" id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="w">  </span><span class="p">/&gt;</span>
+<a href="#__codelineno-12-19" id="__codelineno-12-19" name="__codelineno-12-19"></a>
+<a href="#__codelineno-12-20" id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="w">  </span><span class="p">{</span><span class="cm">/* Scene Content */</span><span class="p">}</span>
+<a href="#__codelineno-12-21" id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">Model</span><span class="w"> </span><span class="p">{</span><span class="na">...props</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-12-22" id="__codelineno-12-22" name="__codelineno-12-22"></a>
+<a href="#__codelineno-12-23" id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="w">  </span><span class="p">{</span><span class="cm">/* Effects */</span><span class="p">}</span>
+<a href="#__codelineno-12-24" id="__codelineno-12-24" name="__codelineno-12-24"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">EffectComposer</span><span class="p">&gt;</span>
+<a href="#__codelineno-12-25" id="__codelineno-12-25" name="__codelineno-12-25"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">Bloom</span><span class="w"> </span><span class="na">intensity</span><span class="o">=</span><span class="p">{</span><span class="mf">0.5</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-12-26" id="__codelineno-12-26" name="__codelineno-12-26"></a><span class="w">  </span><span class="p">&lt;/</span><span class="nt">EffectComposer</span><span class="p">&gt;</span>
+<a href="#__codelineno-12-27" id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="p">&lt;/</span><span class="nt">Canvas</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="rendering-flow">Rendering Flow<a class="headerlink" href="#rendering-flow" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant React
+    participant R3F
+    participant Three
+    participant WebGL
+
+    React-&gt;&gt;R3F: JSX Component Tree
+    R3F-&gt;&gt;Three: Create Three.js Objects
+    Three-&gt;&gt;WebGL: Compile Shaders
+
+    loop Animation Frame
+        R3F-&gt;&gt;Three: Update Object Properties
+        Three-&gt;&gt;Three: Calculate Matrices
+        Three-&gt;&gt;WebGL: Draw Calls
+        WebGL-&gt;&gt;React: Frame Rendered
+    end</code></pre>
+<h2 id="performance-optimizations">Performance Optimizations<a class="headerlink" href="#performance-optimizations" title="Permanent link">¶</a></h2>
+<h3 id="1-memoization">1. Memoization<a class="headerlink" href="#1-memoization" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1">// Expensive calculations</span>
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">particleGeometry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useMemo</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BufferGeometry</span><span class="p">();</span>
+<a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
+<a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a>
+<a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="c1">// Component memoization</span>
+<a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">MemoizedModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">memo</span><span class="p">(</span><span class="nx">Model</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="2-debouncing-user-input">2. Debouncing User Input<a class="headerlink" href="#2-debouncing-user-input" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">handleFireChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">debounceTimer</span><span class="p">)</span><span class="w"> </span><span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">debounceTimer</span><span class="p">);</span>
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">  </span><span class="nx">setDebounceTimer</span><span class="p">(</span>
+<a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">      </span><span class="nx">setFireIntensity</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">300</span><span class="p">)</span>
+<a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">  </span><span class="p">);</span>
+<a href="#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="p">};</span>
+</code></pre></div>
+<h3 id="3-conditional-rendering">3. Conditional Rendering<a class="headerlink" href="#3-conditional-rendering" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="p">{</span><span class="nx">systemStatus</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'CRITICAL'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">AlertBanner</span><span class="w"> </span><span class="nx">message</span><span class="o">=</span><span class="s2">"CRITICAL: Temperature exceeding safe limits!"</span><span class="w"> </span><span class="o">/&gt;</span>
+<a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="p">)}</span>
+</code></pre></div>
+<h3 id="4-useframe-optimization">4. useFrame Optimization<a class="headerlink" href="#4-useframe-optimization" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="nx">useFrame</span><span class="p">((</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">delta</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="w">  </span><span class="c1">// Limit updates to essential calculations</span>
+<a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">delta</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">    </span><span class="c1">// Update logic only if frame time is reasonable</span>
+<a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">  </span><span class="p">}</span>
+<a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="p">});</span>
+</code></pre></div>
+<h2 id="responsive-design">Responsive Design<a class="headerlink" href="#responsive-design" title="Permanent link">¶</a></h2>
+<h3 id="breakpoint-strategy">Breakpoint Strategy<a class="headerlink" href="#breakpoint-strategy" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Screen Size</th>
+<th>Layout</th>
+<th>3D View</th>
+<th>Controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 768px</td>
+<td>Single column</td>
+<td>Full width</td>
+<td>Below scene</td>
+</tr>
+<tr>
+<td>768px - 1024px</td>
+<td>Two column</td>
+<td>60% width</td>
+<td>Side panel</td>
+</tr>
+<tr>
+<td>&gt; 1024px</td>
+<td>Grid layout</td>
+<td>70% width</td>
+<td>Side panel + bottom telemetry</td>
+</tr>
+</tbody>
+</table>
+<h3 id="css-approach">CSS Approach<a class="headerlink" href="#css-approach" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="c">/* Tailwind responsive classes */</span>
+<a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="o">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="nt">className</span><span class="o">=</span><span class="s2">"</span>
+<a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="s2">  grid </span>
+<a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="s2">  grid-cols-1 </span>
+<a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="s2">  md:grid-cols-2 </span>
+<a href="#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="s2">  lg:grid-cols-3 </span>
+<a href="#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="s2">  gap-4</span>
+<a href="#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="s2">"</span><span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">¶</a></h2>
+<h3 id="api-error-boundaries">API Error Boundaries<a class="headerlink" href="#api-error-boundaries" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/simulate'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="w">  </span><span class="nx">setSimulationState</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">visual_state</span><span class="p">);</span>
+<a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">  </span><span class="nx">setError</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">  </span><span class="nx">setError</span><span class="p">(</span><span class="s1">'Failed to communicate with backend'</span><span class="p">);</span>
+<a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Simulation error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<a href="#__codelineno-18-8" id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="visual-error-feedback">Visual Error Feedback<a class="headerlink" href="#visual-error-feedback" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="p">{</span><span class="nx">error</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"error-banner"</span><span class="p">&gt;</span>
+<a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">AlertCircle</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"icon"</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="w">    </span><span class="p">{</span><span class="nx">error</span><span class="p">}</span>
+<a href="#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="w">  </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a href="#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="p">)}</span>
+</code></pre></div>
+<h2 id="testing-strategy-future">Testing Strategy (Future)<a class="headerlink" href="#testing-strategy-future" title="Permanent link">¶</a></h2>
+<h3 id="recommended-tests">Recommended Tests<a class="headerlink" href="#recommended-tests" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Component Tests</strong>:</li>
+<li>Dashboard state updates correctly</li>
+<li>ControlPanel inputs trigger callbacks</li>
+<li>
+<p>TrendChart renders with data</p>
+</li>
+<li>
+<p><strong>Integration Tests</strong>:</p>
+</li>
+<li>API communication flow</li>
+<li>
+<p>State synchronization across components</p>
+</li>
+<li>
+<p><strong>Visual Regression Tests</strong>:</p>
+</li>
+<li>3D scene renders correctly</li>
+<li>
+<p>UI layout at different breakpoints</p>
+</li>
+<li>
+<p><strong>Performance Tests</strong>:</p>
+</li>
+<li>Frame rate during heavy particle effects</li>
+<li>Memory usage over extended sessions</li>
+</ol>
+<hr/>
+<p>Next: <a href="../backend/">Backend Architecture →</a></p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2026 B.I.M.C.S Team
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/your-org/bimcs" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://hub.docker.com/r/your-org/bimcs" rel="noopener" target="_blank" title="hub.docker.com">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+</body>
+</html>

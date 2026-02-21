@@ -1,0 +1,2326 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Boiler Intelligent Monitoring &amp; Control System - Industrial Digital Twin" name="description"/>
+<meta content="B.I.M.C.S Team" name="author"/>
+<link href="https://bimcs.example.com/tech-stack/" rel="canonical"/>
+<link href="../architecture/" rel="prev"/>
+<link href="../frontend/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.2" name="generator"/>
+<title>Technology Stack - B.I.M.C.S Documentation</title>
+<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="cyan" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#technology-stack">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="B.I.M.C.S Documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="B.I.M.C.S Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 18v2h4v-2zm0-4v2h10v-2zm6 4v2h4v-2zm6-4v2h4v-2zm0 4v2h4v-2zM2 22V8l5 4V8l5 4V8l5 4 1-10h3l1 10v10z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            B.I.M.C.S Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Technology Stack
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="cyan" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="cyan" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/your-org/bimcs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</div>
+<div class="md-source__repository">
+    bimcs
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../architecture/">
+          
+  
+  
+  Architecture
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../frontend/">
+          
+  
+  
+  Components
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../api-reference/">
+          
+  
+  
+  Reference
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../development/">
+          
+  
+  
+  Development
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="B.I.M.C.S Documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="B.I.M.C.S Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 18v2h4v-2zm0-4v2h10v-2zm6 4v2h4v-2zm6-4v2h4v-2zm0 4v2h4v-2zM2 22V8l5 4V8l5 4V8l5 4 1-10h3l1 10v10z"></path></svg>
+</a>
+    B.I.M.C.S Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/your-org/bimcs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</div>
+<div class="md-source__repository">
+    bimcs
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../architecture/">
+<span class="md-ellipsis">
+    
+  
+    System Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Technology Stack
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Technology Stack
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stack-diagram">
+<span class="md-ellipsis">
+      
+        Stack Diagram
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frontend-stack">
+<span class="md-ellipsis">
+      
+        Frontend Stack
+      
+    </span>
+</a>
+<nav aria-label="Frontend Stack" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-framework">
+<span class="md-ellipsis">
+      
+        Core Framework
+      
+    </span>
+</a>
+<nav aria-label="Core Framework" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#react-19">
+<span class="md-ellipsis">
+      
+        React 19
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vite-7">
+<span class="md-ellipsis">
+      
+        Vite 7
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d-graphics">
+<span class="md-ellipsis">
+      
+        3D Graphics
+      
+    </span>
+</a>
+<nav aria-label="3D Graphics" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#threejs">
+<span class="md-ellipsis">
+      
+        Three.js
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#react-threefiber">
+<span class="md-ellipsis">
+      
+        @react-three/fiber
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#react-threedrei">
+<span class="md-ellipsis">
+      
+        @react-three/drei
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#styling">
+<span class="md-ellipsis">
+      
+        Styling
+      
+    </span>
+</a>
+<nav aria-label="Styling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tailwind-css-4">
+<span class="md-ellipsis">
+      
+        Tailwind CSS 4
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#additional-frontend-libraries">
+<span class="md-ellipsis">
+      
+        Additional Frontend Libraries
+      
+    </span>
+</a>
+<nav aria-label="Additional Frontend Libraries" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#axios">
+<span class="md-ellipsis">
+      
+        Axios
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recharts">
+<span class="md-ellipsis">
+      
+        Recharts
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gsap">
+<span class="md-ellipsis">
+      
+        GSAP
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lucide-react">
+<span class="md-ellipsis">
+      
+        Lucide React
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#backend-stack">
+<span class="md-ellipsis">
+      
+        Backend Stack
+      
+    </span>
+</a>
+<nav aria-label="Backend Stack" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-framework_1">
+<span class="md-ellipsis">
+      
+        Core Framework
+      
+    </span>
+</a>
+<nav aria-label="Core Framework" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fastapi">
+<span class="md-ellipsis">
+      
+        FastAPI
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uvicorn">
+<span class="md-ellipsis">
+      
+        Uvicorn
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#machine-learning">
+<span class="md-ellipsis">
+      
+        Machine Learning
+      
+    </span>
+</a>
+<nav aria-label="Machine Learning" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tensorflow-2x">
+<span class="md-ellipsis">
+      
+        TensorFlow 2.x
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#keras">
+<span class="md-ellipsis">
+      
+        Keras
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scikit-learn">
+<span class="md-ellipsis">
+      
+        scikit-learn
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scientific-computing">
+<span class="md-ellipsis">
+      
+        Scientific Computing
+      
+    </span>
+</a>
+<nav aria-label="Scientific Computing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#numpy">
+<span class="md-ellipsis">
+      
+        NumPy
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pandas">
+<span class="md-ellipsis">
+      
+        Pandas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#development-tools">
+<span class="md-ellipsis">
+      
+        Development Tools
+      
+    </span>
+</a>
+<nav aria-label="Development Tools" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#typescript">
+<span class="md-ellipsis">
+      
+        TypeScript
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#jupyter-notebook">
+<span class="md-ellipsis">
+      
+        Jupyter Notebook
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git">
+<span class="md-ellipsis">
+      
+        Git
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#infrastructure">
+<span class="md-ellipsis">
+      
+        Infrastructure
+      
+    </span>
+</a>
+<nav aria-label="Infrastructure" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#runtime-environments">
+<span class="md-ellipsis">
+      
+        Runtime Environments
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deployment-stack-future">
+<span class="md-ellipsis">
+      
+        Deployment Stack (Future)
+      
+    </span>
+</a>
+<nav aria-label="Deployment Stack (Future)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#containerization">
+<span class="md-ellipsis">
+      
+        Containerization
+      
+    </span>
+</a>
+<nav aria-label="Containerization" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docker">
+<span class="md-ellipsis">
+      
+        Docker
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloud-platforms-potential">
+<span class="md-ellipsis">
+      
+        Cloud Platforms (Potential)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#database-future">
+<span class="md-ellipsis">
+      
+        Database (Future)
+      
+    </span>
+</a>
+<nav aria-label="Database (Future)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#postgresql">
+<span class="md-ellipsis">
+      
+        PostgreSQL
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#redis">
+<span class="md-ellipsis">
+      
+        Redis
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#documentation-stack">
+<span class="md-ellipsis">
+      
+        Documentation Stack
+      
+    </span>
+</a>
+<nav aria-label="Documentation Stack" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mkdocs">
+<span class="md-ellipsis">
+      
+        MkDocs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mermaid">
+<span class="md-ellipsis">
+      
+        Mermaid
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#version-compatibility">
+<span class="md-ellipsis">
+      
+        Version Compatibility
+      
+    </span>
+</a>
+<nav aria-label="Version Compatibility" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tested-configurations">
+<span class="md-ellipsis">
+      
+        Tested Configurations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#minimum-requirements">
+<span class="md-ellipsis">
+      
+        Minimum Requirements
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#package-managers">
+<span class="md-ellipsis">
+      
+        Package Managers
+      
+    </span>
+</a>
+<nav aria-label="Package Managers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frontend-npm">
+<span class="md-ellipsis">
+      
+        Frontend - npm
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#backend-pip">
+<span class="md-ellipsis">
+      
+        Backend - pip
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#browser-support">
+<span class="md-ellipsis">
+      
+        Browser Support
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-benchmarks">
+<span class="md-ellipsis">
+      
+        Performance Benchmarks
+      
+    </span>
+</a>
+<nav aria-label="Performance Benchmarks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#backend">
+<span class="md-ellipsis">
+      
+        Backend
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frontend">
+<span class="md-ellipsis">
+      
+        Frontend
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-considerations">
+<span class="md-ellipsis">
+      
+        Security Considerations
+      
+    </span>
+</a>
+<nav aria-label="Security Considerations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#current-state-development">
+<span class="md-ellipsis">
+      
+        Current State (Development)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#production-requirements">
+<span class="md-ellipsis">
+      
+        Production Requirements
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Components
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Components
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../frontend/">
+<span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../backend/">
+<span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../3d-model/">
+<span class="md-ellipsis">
+    
+  
+    3D Model
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../api-reference/">
+<span class="md-ellipsis">
+    
+  
+    API Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ml-training/">
+<span class="md-ellipsis">
+    
+  
+    ML Model Training
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../development/">
+<span class="md-ellipsis">
+    
+  
+    Setup Guide
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../contributing/">
+<span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stack-diagram">
+<span class="md-ellipsis">
+      
+        Stack Diagram
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frontend-stack">
+<span class="md-ellipsis">
+      
+        Frontend Stack
+      
+    </span>
+</a>
+<nav aria-label="Frontend Stack" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-framework">
+<span class="md-ellipsis">
+      
+        Core Framework
+      
+    </span>
+</a>
+<nav aria-label="Core Framework" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#react-19">
+<span class="md-ellipsis">
+      
+        React 19
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vite-7">
+<span class="md-ellipsis">
+      
+        Vite 7
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d-graphics">
+<span class="md-ellipsis">
+      
+        3D Graphics
+      
+    </span>
+</a>
+<nav aria-label="3D Graphics" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#threejs">
+<span class="md-ellipsis">
+      
+        Three.js
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#react-threefiber">
+<span class="md-ellipsis">
+      
+        @react-three/fiber
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#react-threedrei">
+<span class="md-ellipsis">
+      
+        @react-three/drei
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#styling">
+<span class="md-ellipsis">
+      
+        Styling
+      
+    </span>
+</a>
+<nav aria-label="Styling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tailwind-css-4">
+<span class="md-ellipsis">
+      
+        Tailwind CSS 4
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#additional-frontend-libraries">
+<span class="md-ellipsis">
+      
+        Additional Frontend Libraries
+      
+    </span>
+</a>
+<nav aria-label="Additional Frontend Libraries" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#axios">
+<span class="md-ellipsis">
+      
+        Axios
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recharts">
+<span class="md-ellipsis">
+      
+        Recharts
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gsap">
+<span class="md-ellipsis">
+      
+        GSAP
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lucide-react">
+<span class="md-ellipsis">
+      
+        Lucide React
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#backend-stack">
+<span class="md-ellipsis">
+      
+        Backend Stack
+      
+    </span>
+</a>
+<nav aria-label="Backend Stack" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-framework_1">
+<span class="md-ellipsis">
+      
+        Core Framework
+      
+    </span>
+</a>
+<nav aria-label="Core Framework" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fastapi">
+<span class="md-ellipsis">
+      
+        FastAPI
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uvicorn">
+<span class="md-ellipsis">
+      
+        Uvicorn
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#machine-learning">
+<span class="md-ellipsis">
+      
+        Machine Learning
+      
+    </span>
+</a>
+<nav aria-label="Machine Learning" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tensorflow-2x">
+<span class="md-ellipsis">
+      
+        TensorFlow 2.x
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#keras">
+<span class="md-ellipsis">
+      
+        Keras
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scikit-learn">
+<span class="md-ellipsis">
+      
+        scikit-learn
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scientific-computing">
+<span class="md-ellipsis">
+      
+        Scientific Computing
+      
+    </span>
+</a>
+<nav aria-label="Scientific Computing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#numpy">
+<span class="md-ellipsis">
+      
+        NumPy
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pandas">
+<span class="md-ellipsis">
+      
+        Pandas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#development-tools">
+<span class="md-ellipsis">
+      
+        Development Tools
+      
+    </span>
+</a>
+<nav aria-label="Development Tools" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#typescript">
+<span class="md-ellipsis">
+      
+        TypeScript
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#jupyter-notebook">
+<span class="md-ellipsis">
+      
+        Jupyter Notebook
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git">
+<span class="md-ellipsis">
+      
+        Git
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#infrastructure">
+<span class="md-ellipsis">
+      
+        Infrastructure
+      
+    </span>
+</a>
+<nav aria-label="Infrastructure" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#runtime-environments">
+<span class="md-ellipsis">
+      
+        Runtime Environments
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deployment-stack-future">
+<span class="md-ellipsis">
+      
+        Deployment Stack (Future)
+      
+    </span>
+</a>
+<nav aria-label="Deployment Stack (Future)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#containerization">
+<span class="md-ellipsis">
+      
+        Containerization
+      
+    </span>
+</a>
+<nav aria-label="Containerization" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docker">
+<span class="md-ellipsis">
+      
+        Docker
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloud-platforms-potential">
+<span class="md-ellipsis">
+      
+        Cloud Platforms (Potential)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#database-future">
+<span class="md-ellipsis">
+      
+        Database (Future)
+      
+    </span>
+</a>
+<nav aria-label="Database (Future)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#postgresql">
+<span class="md-ellipsis">
+      
+        PostgreSQL
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#redis">
+<span class="md-ellipsis">
+      
+        Redis
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#documentation-stack">
+<span class="md-ellipsis">
+      
+        Documentation Stack
+      
+    </span>
+</a>
+<nav aria-label="Documentation Stack" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mkdocs">
+<span class="md-ellipsis">
+      
+        MkDocs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mermaid">
+<span class="md-ellipsis">
+      
+        Mermaid
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#version-compatibility">
+<span class="md-ellipsis">
+      
+        Version Compatibility
+      
+    </span>
+</a>
+<nav aria-label="Version Compatibility" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tested-configurations">
+<span class="md-ellipsis">
+      
+        Tested Configurations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#minimum-requirements">
+<span class="md-ellipsis">
+      
+        Minimum Requirements
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#package-managers">
+<span class="md-ellipsis">
+      
+        Package Managers
+      
+    </span>
+</a>
+<nav aria-label="Package Managers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frontend-npm">
+<span class="md-ellipsis">
+      
+        Frontend - npm
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#backend-pip">
+<span class="md-ellipsis">
+      
+        Backend - pip
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#browser-support">
+<span class="md-ellipsis">
+      
+        Browser Support
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-benchmarks">
+<span class="md-ellipsis">
+      
+        Performance Benchmarks
+      
+    </span>
+</a>
+<nav aria-label="Performance Benchmarks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#backend">
+<span class="md-ellipsis">
+      
+        Backend
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frontend">
+<span class="md-ellipsis">
+      
+        Frontend
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-considerations">
+<span class="md-ellipsis">
+      
+        Security Considerations
+      
+    </span>
+</a>
+<nav aria-label="Security Considerations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#current-state-development">
+<span class="md-ellipsis">
+      
+        Current State (Development)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#production-requirements">
+<span class="md-ellipsis">
+      
+        Production Requirements
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="technology-stack">Technology Stack<a class="headerlink" href="#technology-stack" title="Permanent link">¶</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>B.I.M.C.S leverages modern, production-grade technologies across its entire stack to deliver a high-performance industrial digital twin application.</p>
+<h2 id="stack-diagram">Stack Diagram<a class="headerlink" href="#stack-diagram" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>graph TB
+    subgraph "Frontend Technologies"
+        React[React 19]
+        Vite[Vite 7]
+        Three[Three.js]
+        R3F[React Three Fiber]
+        Tailwind[Tailwind CSS 4]
+    end
+
+    subgraph "Backend Technologies"
+        FastAPI[FastAPI]
+        Uvicorn[Uvicorn]
+        TF[TensorFlow 2]
+        NumPy[NumPy]
+    end
+
+    subgraph "Development Tools"
+        TypeScript[TypeScript]
+        Git[Git]
+        Jupyter[Jupyter]
+    end
+
+    subgraph "Infrastructure"
+        Python[Python 3.9+]
+        Node[Node.js 18+]
+    end
+
+    React --&gt; Vite
+    React --&gt; R3F
+    R3F --&gt; Three
+    React --&gt; Tailwind
+
+    FastAPI --&gt; Uvicorn
+    FastAPI --&gt; TF
+    FastAPI --&gt; NumPy
+
+    Vite --&gt; TypeScript
+    TF --&gt; Jupyter
+
+    React --&gt; Node
+    FastAPI --&gt; Python
+
+    style React fill:#61dafb
+    style FastAPI fill:#009688
+    style TF fill:#ff6f00
+    style Three fill:#000000,color:#fff</code></pre>
+<h2 id="frontend-stack">Frontend Stack<a class="headerlink" href="#frontend-stack" title="Permanent link">¶</a></h2>
+<h3 id="core-framework">Core Framework<a class="headerlink" href="#core-framework" title="Permanent link">¶</a></h3>
+<h4 id="react-19">React 19<a class="headerlink" href="#react-19" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: UI Component Library<br/>
+<strong>Version</strong>: 19.2.3<br/>
+<strong>Why Chosen</strong>:
+- Latest concurrent features for smooth rendering
+- Best-in-class component model
+- Huge ecosystem of libraries
+- Excellent TypeScript support</p>
+<p><strong>Key Features Used</strong>:
+- Hooks (useState, useEffect, useCallback, useMemo)
+- Functional components
+- Concurrent rendering for 3D performance</p>
+<p><strong>Official Site</strong>: <a href="https://react.dev">react.dev</a></p>
+<hr/>
+<h4 id="vite-7">Vite 7<a class="headerlink" href="#vite-7" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Build Tool &amp; Dev Server<br/>
+<strong>Version</strong>: 7.2.4<br/>
+<strong>Why Chosen</strong>:
+- Lightning-fast Hot Module Replacement (HMR)
+- Native ES modules (no bundling in dev)
+- Optimized production builds
+- Built-in TypeScript support</p>
+<p><strong>Configuration</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// vite.config.js</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">react</span><span class="p">()],</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">5173</span><span class="p">,</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="nx">proxy</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">      </span><span class="s1">'/api'</span><span class="o">:</span><span class="w"> </span><span class="s1">'http://localhost:8000'</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="p">}</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Official Site</strong>: <a href="https://vitejs.dev">vitejs.dev</a></p>
+<hr/>
+<h3 id="3d-graphics">3D Graphics<a class="headerlink" href="#3d-graphics" title="Permanent link">¶</a></h3>
+<h4 id="threejs">Three.js<a class="headerlink" href="#threejs" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: WebGL 3D Engine<br/>
+<strong>Version</strong>: 0.182.0<br/>
+<strong>Why Chosen</strong>:
+- Industry standard for web 3D
+- Comprehensive API for rendering, geometries, materials
+- Active development and community
+- Excellent documentation</p>
+<p><strong>Features Used</strong>:
+- PerspectiveCamera
+- WebGLRenderer with shadows
+- BufferGeometry for efficiency
+- ShaderMaterial for custom effects
+- GLTFLoader for model import</p>
+<p><strong>Official Site</strong>: <a href="https://threejs.org">threejs.org</a></p>
+<hr/>
+<h4 id="react-threefiber">@react-three/fiber<a class="headerlink" href="#react-threefiber" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: React Renderer for Three.js<br/>
+<strong>Version</strong>: 9.5.0<br/>
+<strong>Why Chosen</strong>:
+- Declarative Three.js in React
+- Automatic memory management
+- React-friendly API
+- Hooks for animation (useFrame)</p>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">Canvas</span><span class="p">&gt;</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">mesh</span><span class="p">&gt;</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">boxGeometry</span><span class="w"> </span><span class="na">args</span><span class="o">=</span><span class="p">{[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">]}</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">meshStandardMaterial</span><span class="w"> </span><span class="na">color</span><span class="o">=</span><span class="s">"orange"</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span><span class="p">&lt;/</span><span class="nt">mesh</span><span class="p">&gt;</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">&lt;/</span><span class="nt">Canvas</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><strong>Official Site</strong>: <a href="https://docs.pmnd.rs/react-three-fiber">docs.pmnd.rs/react-three-fiber</a></p>
+<hr/>
+<h4 id="react-threedrei">@react-three/drei<a class="headerlink" href="#react-threedrei" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Helper Library for R3F<br/>
+<strong>Version</strong>: 10.7.7<br/>
+<strong>Why Chosen</strong>:
+- Pre-built useful components
+- OrbitControls, Environment, useGLTF
+- Saves development time</p>
+<p><strong>Features Used</strong>:
+- <code>useGLTF</code> - Model loading
+- <code>OrbitControls</code> - Camera navigation
+- <code>Environment</code> - HDR lighting
+- <code>Html</code> - 3D-positioned HTML elements</p>
+<p><strong>Official Site</strong>: <a href="https://github.com/pmndrs/drei">github.com/pmndrs/drei</a></p>
+<hr/>
+<h3 id="styling">Styling<a class="headerlink" href="#styling" title="Permanent link">¶</a></h3>
+<h4 id="tailwind-css-4">Tailwind CSS 4<a class="headerlink" href="#tailwind-css-4" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Utility-First CSS Framework<br/>
+<strong>Version</strong>: 4.1.18<br/>
+<strong>Why Chosen</strong>:
+- Rapid UI development
+- Consistent design system
+- Minimal CSS bundle size
+- Dark mode support</p>
+<p><strong>Configuration</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">// tailwind.config.js</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'./src/**/*.{js,jsx,ts,tsx}'</span><span class="p">],</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="nx">extend</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">      </span><span class="nx">colors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="nx">primary</span><span class="o">:</span><span class="w"> </span><span class="s1">'#4ecdc4'</span><span class="p">,</span>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">        </span><span class="nx">danger</span><span class="o">:</span><span class="w"> </span><span class="s1">'#ff6b6b'</span>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">      </span><span class="p">}</span>
+<a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">  </span><span class="p">}</span>
+<a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Official Site</strong>: <a href="https://tailwindcss.com">tailwindcss.com</a></p>
+<hr/>
+<h3 id="additional-frontend-libraries">Additional Frontend Libraries<a class="headerlink" href="#additional-frontend-libraries" title="Permanent link">¶</a></h3>
+<h4 id="axios">Axios<a class="headerlink" href="#axios" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: HTTP Client<br/>
+<strong>Version</strong>: 1.13.2<br/>
+<strong>Why</strong>: Promise-based, better than fetch API</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'axios'</span><span class="p">;</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/simulate'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<hr/>
+<h4 id="recharts">Recharts<a class="headerlink" href="#recharts" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Charting Library<br/>
+<strong>Version</strong>: 3.6.0<br/>
+<strong>Why</strong>: React-native charts, easy to use</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">LineChart</span><span class="w"> </span><span class="na">data</span><span class="o">=</span><span class="p">{</span><span class="nx">chartHistory</span><span class="p">}&gt;</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">Line</span><span class="w"> </span><span class="na">dataKey</span><span class="o">=</span><span class="s">"temperature"</span><span class="w"> </span><span class="na">stroke</span><span class="o">=</span><span class="s">"#ff6b6b"</span><span class="w"> </span><span class="p">/&gt;</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="p">&lt;/</span><span class="nt">LineChart</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr/>
+<h4 id="gsap">GSAP<a class="headerlink" href="#gsap" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Animation Library<br/>
+<strong>Version</strong>: 3.14.2<br/>
+<strong>Why</strong>: Smooth, professional animations</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nx">gsap</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr/>
+<h4 id="lucide-react">Lucide React<a class="headerlink" href="#lucide-react" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Icon Library<br/>
+<strong>Version</strong>: 0.562.0<br/>
+<strong>Why</strong>: Beautiful, consistent icons</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Flame</span><span class="p">,</span><span class="w"> </span><span class="nx">Thermometer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'lucide-react'</span><span class="p">;</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="p">&lt;</span><span class="nt">Flame</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"icon"</span><span class="w"> </span><span class="p">/&gt;</span>
+</code></pre></div>
+<hr/>
+<h2 id="backend-stack">Backend Stack<a class="headerlink" href="#backend-stack" title="Permanent link">¶</a></h2>
+<h3 id="core-framework_1">Core Framework<a class="headerlink" href="#core-framework_1" title="Permanent link">¶</a></h3>
+<h4 id="fastapi">FastAPI<a class="headerlink" href="#fastapi" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Modern Python Web Framework<br/>
+<strong>Version</strong>: Latest<br/>
+<strong>Why Chosen</strong>:
+- High performance (matches Node.js/Go)
+- Automatic API documentation (OpenAPI/Swagger)
+- Pydantic data validation
+- Async support
+- Type hints</p>
+<p><strong>Key Features</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">Request</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a>    <span class="n">value</span><span class="p">:</span> <span class="nb">float</span>
+<a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a>
+<a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/endpoint"</span><span class="p">)</span>
+<a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">endpoint</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+<a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"result"</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Official Site</strong>: <a href="https://fastapi.tiangolo.com">fastapi.tiangolo.com</a></p>
+<hr/>
+<h4 id="uvicorn">Uvicorn<a class="headerlink" href="#uvicorn" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: ASGI Server<br/>
+<strong>Version</strong>: Latest<br/>
+<strong>Why Chosen</strong>:
+- Lightning-fast async server
+- Default for FastAPI
+- Production-ready</p>
+<p><strong>Usage</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</code></pre></div></p>
+<p><strong>Official Site</strong>: <a href="https://www.uvicorn.org">uvicorn.org</a></p>
+<hr/>
+<h3 id="machine-learning">Machine Learning<a class="headerlink" href="#machine-learning" title="Permanent link">¶</a></h3>
+<h4 id="tensorflow-2x">TensorFlow 2.x<a class="headerlink" href="#tensorflow-2x" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Deep Learning Framework<br/>
+<strong>Version</strong>: 2.x<br/>
+<strong>Why Chosen</strong>:
+- Production-ready ML platform
+- Keras API (high-level)
+- CPU and GPU support
+- Model serving capabilities</p>
+<p><strong>Key Features Used</strong>:
+- LSTM layers
+- Model training and inference
+- Model persistence (.keras format)</p>
+<p><strong>Official Site</strong>: <a href="https://www.tensorflow.org">tensorflow.org</a></p>
+<hr/>
+<h4 id="keras">Keras<a class="headerlink" href="#keras" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: High-Level Neural Network API<br/>
+<strong>Version</strong>: Integrated in TensorFlow 2.x<br/>
+<strong>Why Chosen</strong>:
+- User-friendly API
+- Quick prototyping
+- Production deployment</p>
+<p><strong>Model Example</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="p">])</span>
+</code></pre></div></p>
+<hr/>
+<h4 id="scikit-learn">scikit-learn<a class="headerlink" href="#scikit-learn" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Machine Learning Utilities<br/>
+<strong>Version</strong>: Latest<br/>
+<strong>Why Chosen</strong>:
+- StandardScaler for data normalization
+- Train/test splitting
+- Evaluation metrics</p>
+<p><strong>Usage</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Official Site</strong>: <a href="https://scikit-learn.org">scikit-learn.org</a></p>
+<hr/>
+<h3 id="scientific-computing">Scientific Computing<a class="headerlink" href="#scientific-computing" title="Permanent link">¶</a></h3>
+<h4 id="numpy">NumPy<a class="headerlink" href="#numpy" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Numerical Computing<br/>
+<strong>Version</strong>: Latest<br/>
+<strong>Why Chosen</strong>:
+- Fast array operations
+- Physics calculations
+- Required by TensorFlow</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Official Site</strong>: <a href="https://numpy.org">numpy.org</a></p>
+<hr/>
+<h4 id="pandas">Pandas<a class="headerlink" href="#pandas" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Data Manipulation<br/>
+<strong>Version</strong>: Latest<br/>
+<strong>Why Chosen</strong>:
+- CSV data loading
+- Time series operations
+- Feature engineering</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data.csv'</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Official Site</strong>: <a href="https://pandas.pydata.org">pandas.pydata.org</a></p>
+<hr/>
+<h2 id="development-tools">Development Tools<a class="headerlink" href="#development-tools" title="Permanent link">¶</a></h2>
+<h3 id="typescript">TypeScript<a class="headerlink" href="#typescript" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Type-Safe JavaScript<br/>
+<strong>Version</strong>: 5.9.3<br/>
+<strong>Why Chosen</strong>:
+- Catch errors at compile time
+- Better IDE support
+- Self-documenting code</p>
+<p><strong>Configuration</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="p">{</span>
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span><span class="nt">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES2020"</span><span class="p">,</span>
+<a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span><span class="nt">"jsx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"react-jsx"</span><span class="p">,</span>
+<a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">    </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">  </span><span class="p">}</span>
+<a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="p">}</span>
+</code></pre></div></p>
+<hr/>
+<h3 id="jupyter-notebook">Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Interactive Python Environment<br/>
+<strong>Version</strong>: Latest<br/>
+<strong>Why Chosen</strong>:
+- Model training and experimentation
+- Data exploration
+- Documentation with code</p>
+<p><strong>Usage</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>jupyter<span class="w"> </span>notebook<span class="w"> </span>train_model.ipynb
+</code></pre></div></p>
+<hr/>
+<h3 id="git">Git<a class="headerlink" href="#git" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Version Control<br/>
+<strong>Why</strong>: Industry standard, distributed VCS</p>
+<hr/>
+<h2 id="infrastructure">Infrastructure<a class="headerlink" href="#infrastructure" title="Permanent link">¶</a></h2>
+<h3 id="runtime-environments">Runtime Environments<a class="headerlink" href="#runtime-environments" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Python</strong></td>
+<td>3.9 - 3.11</td>
+<td>Backend runtime</td>
+</tr>
+<tr>
+<td><strong>Node.js</strong></td>
+<td>18+</td>
+<td>Frontend build &amp; runtime</td>
+</tr>
+<tr>
+<td><strong>npm</strong></td>
+<td>9+</td>
+<td>JavaScript package manager</td>
+</tr>
+<tr>
+<td><strong>pip</strong></td>
+<td>Latest</td>
+<td>Python package manager</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="deployment-stack-future">Deployment Stack (Future)<a class="headerlink" href="#deployment-stack-future" title="Permanent link">¶</a></h2>
+<h3 id="containerization">Containerization<a class="headerlink" href="#containerization" title="Permanent link">¶</a></h3>
+<h4 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Application containerization</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="c"># Backend Dockerfile</span>
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim</span>
+<a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<a href="#__codelineno-15-6" id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<a href="#__codelineno-15-7" id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"uvicorn"</span><span class="p">,</span><span class="w"> </span><span class="s2">"main:app"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--host"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">]</span>
+</code></pre></div>
+<hr/>
+<h3 id="cloud-platforms-potential">Cloud Platforms (Potential)<a class="headerlink" href="#cloud-platforms-potential" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS EC2</strong></td>
+<td>Backend compute</td>
+</tr>
+<tr>
+<td><strong>AWS S3</strong></td>
+<td>Model storage</td>
+</tr>
+<tr>
+<td><strong>Vercel/Netlify</strong></td>
+<td>Frontend static hosting</td>
+</tr>
+<tr>
+<td><strong>Heroku</strong></td>
+<td>Simple full-stack deployment</td>
+</tr>
+<tr>
+<td><strong>DigitalOcean</strong></td>
+<td>Cost-effective VPS</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h3 id="database-future">Database (Future)<a class="headerlink" href="#database-future" title="Permanent link">¶</a></h3>
+<h4 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Persistent data storage<br/>
+<strong>Use Cases</strong>:
+- Historical telemetry
+- User accounts
+- Simulation sessions</p>
+<h4 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">¶</a></h4>
+<p><strong>Purpose</strong>: Caching &amp; real-time data<br/>
+<strong>Use Cases</strong>:
+- Session state
+- Simulation cache
+- WebSocket pub/sub</p>
+<hr/>
+<h2 id="documentation-stack">Documentation Stack<a class="headerlink" href="#documentation-stack" title="Permanent link">¶</a></h2>
+<h3 id="mkdocs">MkDocs<a class="headerlink" href="#mkdocs" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Documentation Site Generator<br/>
+<strong>Version</strong>: Latest<br/>
+<strong>Why Chosen</strong>:
+- Markdown-based
+- Beautiful Material theme
+- Easy deployment</p>
+<p><strong>Configuration</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">B.I.M.C.S Documentation</span>
+<a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="nt">theme</span><span class="p">:</span>
+<a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+<a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
+<a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">    </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+</code></pre></div></p>
+<p><strong>Official Site</strong>: <a href="https://www.mkdocs.org">mkdocs.org</a></p>
+<hr/>
+<h3 id="mermaid">Mermaid<a class="headerlink" href="#mermaid" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Diagram Generation<br/>
+<strong>Why Chosen</strong>:
+- Code-based diagrams
+- Version control friendly
+- Multiple diagram types</p>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="sb">```mermaid</span>
+<a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="s">graph LR</span>
+<a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="s">    A --&gt; B</span>
+<a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="s">    B --&gt; C</span>
+<a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="sb">```</span>
+</code></pre></div></p>
+<hr/>
+<h2 id="version-compatibility">Version Compatibility<a class="headerlink" href="#version-compatibility" title="Permanent link">¶</a></h2>
+<h3 id="tested-configurations">Tested Configurations<a class="headerlink" href="#tested-configurations" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Python</th>
+<th>Node.js</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ubuntu 22.04</td>
+<td>3.11</td>
+<td>18.x</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>macOS 14</td>
+<td>3.10</td>
+<td>20.x</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Windows 11</td>
+<td>3.11</td>
+<td>18.x</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="minimum-requirements">Minimum Requirements<a class="headerlink" href="#minimum-requirements" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>RAM</strong>: 4GB (8GB recommended)</li>
+<li><strong>CPU</strong>: 2 cores (4 cores recommended)</li>
+<li><strong>Disk</strong>: 2GB free space</li>
+<li><strong>GPU</strong>: Not required (CPU inference works)</li>
+</ul>
+<hr/>
+<h2 id="package-managers">Package Managers<a class="headerlink" href="#package-managers" title="Permanent link">¶</a></h2>
+<h3 id="frontend-npm">Frontend - npm<a class="headerlink" href="#frontend-npm" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="p">{</span>
+<a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="w">    </span><span class="nt">"react"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^19.2.3"</span><span class="p">,</span>
+<a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">    </span><span class="nt">"three"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.182.0"</span><span class="p">,</span>
+<a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="w">    </span><span class="nt">"axios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.13.2"</span>
+<a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">  </span><span class="p">},</span>
+<a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-18-8" id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="w">    </span><span class="nt">"vite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^7.2.4"</span><span class="p">,</span>
+<a href="#__codelineno-18-9" id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="w">    </span><span class="nt">"typescript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"~5.9.3"</span>
+<a href="#__codelineno-18-10" id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="w">  </span><span class="p">}</span>
+<a href="#__codelineno-18-11" id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="backend-pip">Backend - pip<a class="headerlink" href="#backend-pip" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>fastapi&gt;=0.100.0
+<a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a>uvicorn&gt;=0.23.0
+<a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a>tensorflow&gt;=2.12.0
+<a href="#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a>numpy&gt;=1.24.0
+<a href="#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a>pandas&gt;=2.0.0
+<a href="#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a>scikit-learn&gt;=1.3.0
+<a href="#__codelineno-19-7" id="__codelineno-19-7" name="__codelineno-19-7"></a>pydantic&gt;=2.0.0
+</code></pre></div>
+<hr/>
+<h2 id="browser-support">Browser Support<a class="headerlink" href="#browser-support" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>Version</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome</td>
+<td>90+</td>
+<td>✅ Full support</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>88+</td>
+<td>✅ Full support</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>15+</td>
+<td>✅ Full support</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>90+</td>
+<td>✅ Full support</td>
+</tr>
+<tr>
+<td>Mobile Safari</td>
+<td>15+</td>
+<td>⚠️ Limited (3D performance)</td>
+</tr>
+<tr>
+<td>Mobile Chrome</td>
+<td>90+</td>
+<td>⚠️ Limited (3D performance)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Requirements</strong>:
+- WebGL 2.0 support
+- ES2020 JavaScript
+- WebSocket support (future)</p>
+<hr/>
+<h2 id="performance-benchmarks">Performance Benchmarks<a class="headerlink" href="#performance-benchmarks" title="Permanent link">¶</a></h2>
+<h3 id="backend">Backend<a class="headerlink" href="#backend" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Startup Time</td>
+<td>2-3 seconds</td>
+</tr>
+<tr>
+<td>Request Latency</td>
+<td>15-30ms</td>
+</tr>
+<tr>
+<td>Memory Usage</td>
+<td>~500MB</td>
+</tr>
+<tr>
+<td>CPU Usage (idle)</td>
+<td>&lt;5%</td>
+</tr>
+<tr>
+<td>Max Requests/sec</td>
+<td>~60</td>
+</tr>
+</tbody>
+</table>
+<h3 id="frontend">Frontend<a class="headerlink" href="#frontend" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial Load</td>
+<td>1-2 seconds</td>
+</tr>
+<tr>
+<td>FPS (3D)</td>
+<td>60 FPS</td>
+</tr>
+<tr>
+<td>Memory Usage</td>
+<td>~200MB</td>
+</tr>
+<tr>
+<td>Bundle Size</td>
+<td>~2MB</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">¶</a></h2>
+<h3 id="current-state-development">Current State (Development)<a class="headerlink" href="#current-state-development" title="Permanent link">¶</a></h3>
+<ul>
+<li>❌ No authentication</li>
+<li>❌ No HTTPS</li>
+<li>❌ No rate limiting</li>
+<li>✅ CORS enabled (all origins)</li>
+<li>✅ Pydantic input validation</li>
+</ul>
+<h3 id="production-requirements">Production Requirements<a class="headerlink" href="#production-requirements" title="Permanent link">¶</a></h3>
+<ul>
+<li>✅ JWT authentication</li>
+<li>✅ HTTPS/TLS</li>
+<li>✅ Rate limiting</li>
+<li>✅ CORS restricted origins</li>
+<li>✅ Security headers</li>
+<li>✅ Input sanitization</li>
+</ul>
+<hr/>
+<p>Next: <a href="../contributing/">Contributing Guide →</a></p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2026 B.I.M.C.S Team
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/your-org/bimcs" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://hub.docker.com/r/your-org/bimcs" rel="noopener" target="_blank" title="hub.docker.com">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+</body>
+</html>
